@@ -1,0 +1,403 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 16px;
+  width: 100%;
+}
+
+.Card--card {
+  background: white;
+  box-shadow: rgba(140, 152, 164, 0.25) 0px 3px 6px 0px;
+  border-radius: 8px;
+  flex: 1;
+  max-width: 100%;
+  margin-left: unset;
+  margin-right: unset;
+  padding: 24px;
+  align-items: flex-start;
+  width: auto;
+}
+
+.Card-icon {
+  border-radius: 256px;
+  background: var(--puck-color-azure-8);
+  color: var(--puck-color-azure-5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+}
+
+.Card-title {
+  font-size: 22px;
+  text-align: center;
+}
+
+.Card--card .Card-title {
+  text-align: left;
+}
+
+.Card-description {
+  font-size: 6px;
+  line-height: 1.5;
+  color: var(--puck-color-grey-4);
+  text-align: center;
+  font-weight: 300;
+}
+
+.Card--card .Card-description {
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Card-onetap_conn_card_container {
+  background-color: #ffffff;
+  display: grid;
+  gap: 60px;
+  justify-content: center;
+}
+
+
+.Card-onetap_conn_user_image{
+  width: 100%;
+}
+
+.upgrade-icon-for-card{
+  position: absolute;
+  top: 5px;
+    left: 73px;
+}
+
+.Card-onetap_conn_personal_card {
+  display: flex;
+  flex-direction: column;
+}
+
+.onetap_conn_personal_card_header {
+  color: #2c2c2c;
+  font-family: Assistant;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.Card-onetap_conn_card_image_container {
+  position: relative;
+  border-radius: 10px 10px 0px 0px;
+}
+
+
+/* .Card-onetap_conn_card_image_container {
+  position: relative;
+  border-radius: 10px 10px 0px 0px;
+  background-image: url('http://polycob.in/wp-content/uploads/2020/10/bigstockphoto_Corporate_Bui.png');
+
+} */
+
+.Card-onetap_conn_card_image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0px 0px;
+}
+
+
+
+.Card-onetap_conn_user_image_container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+
+.Card-onetap_conn_user_image_container_form{
+  position: absolute;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(62, 62, 223);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.Card-onetap_conn_user_image_container_google{
+  position: absolute;
+  left: 85%;
+  background-color: rgb(62, 62, 223);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+
+.onetap_conn_user_image_container img,
+.header-avatar-initials-overlay {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  text-align: center;
+  line-height: 110px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #E65925;
+}
+
+.Card-onetap_conn_personal_card_info {
+  padding-top: 95px;
+  text-align: center;
+  background-color: #ffffff;
+  padding-bottom: 24px;
+}
+
+.Card-onetap_conn_personal_card_info_name {
+  color: #1c1b1f;
+  text-align: center;
+  font-family: 'Inter';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.Card-onetap_conn_personal_card_info_subname {
+  padding-top: 10px;
+  color: #e6b225;
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+
+.Card-onetap_conn_personal_card_2{
+  padding-top: 10px;
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+
+.onetap_conn_personal_card_actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px 10px 10px;
+  width: 100%;
+  gap: 5px;
+  background-color: #ffffff;
+}
+
+.onetap_conn_personal_card_actions1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 0px 0px 10px;
+  background: #000;
+  color: #ffffff;
+  flex: 1;
+  cursor: pointer;
+  padding: 5px 0px;
+}
+.onetap_conn_personal_card_actions1_Free{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 0px 0px 10px;
+  background: #000;
+  color: #ffffff;
+  flex: 1;
+  cursor: pointer;
+  padding: 5px 0px;
+}
+
+.onetap_conn_personal_card_actions1:hover {
+  background-color: #e65925;
+}
+
+.onetap_conn_personal_card_actions2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  color: #ffffff;
+  flex: 1;
+  cursor: pointer;
+  padding: 5px 0px;
+}
+
+.onetap_conn_personal_card_actions2:hover {
+  background-color: #e65925;
+}
+
+.onetap_conn_personal_card_actions3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 10px 10px 0px;
+  background: #000;
+  color: #ffffff;
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0px;
+}
+
+.onetap_conn_personal_card_actions3:hover {
+  background-color: #e65925;
+}
+
+.onetap_conn_personal_card_actions3_dropdown {
+  position: absolute;
+  min-width: inherit;
+  top: 105%;
+  background: #000;
+  color: #ffffff;
+  border: 2px solid gray;
+  border-radius: 4px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-top: none;
+  width: fit-content;
+  left: 0;
+  right: 0;
+}
+
+.onetap_conn_personal_card_actions3_dropdown_item1 {
+  cursor: pointer;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.onetap_conn_personal_card_actions3_dropdown_item2 {
+  cursor: pointer;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.onetap_conn_personal_card_actions3_dropdown_item1:hover {
+  background-color: #e65925;
+}
+
+.onetap_conn_personal_card_actions3_dropdown_item2:hover {
+  background-color: #e65925;
+}
+
+.onetap_conn_personal_card_buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px 10px 10px;
+  width: 100%;
+  gap: 5px;
+  background-color: #ffffff;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.onetap_conn_personal_card_buttons1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 0px 0px 10px;
+  background: #000;
+  color: #ffffff;
+  flex: 1;
+  cursor: pointer;
+  padding: 10px 0px;
+}
+
+.onetap_conn_personal_card_buttons1:hover {
+  background-color: #e65925;
+}
+
+.onetap_conn_personal_card_buttons2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 10px 10px 0px;
+  background: #000;
+  color: #ffffff;
+  flex: 1;
+  cursor: pointer;
+  padding: 10px 0px;
+}
+
+.onetap_conn_personal_card_buttons2:hover {
+  background-color: #e65925;
+}
+
+/* media query */
+@media only screen and (max-width: 1279px) and (min-width: 768px) {
+  .onetap_conn_card_container {
+    display: grid;
+    gap: 60px;
+    justify-content: center;
+  }
+
+  .onetap_conn_user_image_container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid #000;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+  }
+
+  .Card-onetap_conn_personal_card_info {
+    padding-top: 15%;
+    text-align: center;
+    background-color: #ffffff;
+    padding-bottom: 24px;
+  }
+
+}
