@@ -140,6 +140,37 @@
   overflow: hidden;
 }
 
+.Card-profile-card-social{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Card-profile-card-social__item{
+  display: inline-flex;
+    width: 55px;
+    height: 55px;
+    margin: 15px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+    font-size: 21px;
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
+
+.Card-icon-font_w{
+  display: inline-flex;
+}
+
+
+
+
 .Card-onetap_conn_user_image_container_form{
   position: absolute;
   left: 15%;
@@ -182,6 +213,40 @@
   text-align: center;
   background-color: #ffffff;
   padding-bottom: 24px;
+}
+
+.Card-styles_Section-inner__8sPWU{
+  max-width: 1280px;
+  margin-right: auto;
+
+}
+
+.Card-styles_Columns__e_oyl{
+  display: grid;
+  gap: 100%;
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.Card-display_flex_flex_direction{
+  display: flex;
+  flex-direction: column;
+}
+
+.Card-styles_Section__4tQXe{
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.Card-color_inherit_display_flex_text-align_left{
+  color: inherit;
+  display: flex;
+  text-align: left;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 300;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: flex-start;
 }
 
 .Card-onetap_conn_personal_card_info_name {
@@ -399,5 +464,18 @@
     background-color: #ffffff;
     padding-bottom: 24px;
   }
+
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+.styles_Hero__AO43E h1 {
+  line-height: 1.1;
+  font-size: 22px;
+  line-height: 32px;
+}
+
 
 }

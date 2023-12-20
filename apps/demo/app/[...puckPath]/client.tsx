@@ -55,6 +55,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
           config={config}
           data={data}
           onPublish={async (data: Data) => {
+            console.log(data)
             localStorage.setItem(key, JSON.stringify(data));
           }}
           plugins={[headingAnalyzer]}

@@ -398,9 +398,6 @@ export const initialData: Record<string, Data> = {
       {
         "type": "Card",
         "props": {
-            "Name": "Jhon Doe",
-            "Company": "Doe Enterprise",
-            "Designation": "CEO | Financial Advisor",
             "title": "Title",
             "description": "Description",
             "icon": "Feather",
