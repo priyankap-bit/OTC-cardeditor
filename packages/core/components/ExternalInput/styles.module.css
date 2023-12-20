@@ -1,0 +1,230 @@
+.ExternalInput {
+  font-family: var(--puck-font-stack);
+}
+
+.ExternalInput-actions {
+  display: flex;
+}
+
+.ExternalInput-button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid var(--puck-color-grey-8);
+  border-radius: 4px;
+  color: var(--puck-color-azure-4);
+  padding: 12px 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.ExternalInput-button:hover,
+.ExternalInput-detachButton:hover {
+  cursor: pointer;
+  background: var(--puck-color-azure-9);
+  color: var(--puck-color-azure-4);
+  z-index: 1;
+}
+
+.ExternalInput--dataSelected .ExternalInput-button {
+  color: var(--puck-color-grey-2);
+  display: block;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.ExternalInput-detachButton {
+  border: 1px solid var(--puck-color-grey-8);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: var(--puck-color-grey-11);
+  color: var(--puck-color-grey-4);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  margin-left: -1px;
+}
+
+.ExternalInputModal {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-height: 90vh;
+}
+
+.ExternalInputModal-masthead {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 32px 24px;
+}
+
+.ExternalInputModal-tableWrapper {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.ExternalInputModal-table {
+  border-collapse: unset;
+  border-spacing: 0px;
+  color: var(--puck-color-neutral-4);
+  position: relative;
+  z-index: 0;
+  min-width: 100%;
+}
+
+.ExternalInputModal-thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ExternalInputModal-th {
+  border-bottom: 1px solid var(--puck-color-grey-8);
+  border-top: 1px solid var(--puck-color-grey-8);
+  font-weight: 700;
+  padding: 16px 24px;
+  opacity: 0.9;
+}
+
+.ExternalInputModal-td {
+  font-family: var(--puck-font-stack);
+  padding: 16px 24px;
+}
+
+.ExternalInputModal-tr:nth-of-type(n) {
+  background-color: white;
+}
+
+.ExternalInputModal-tr:nth-of-type(2n) {
+  background-color: var(--puck-color-grey-10);
+}
+
+.ExternalInputModal-tr .ExternalInputModal-td:first-of-type {
+  font-weight: 500;
+}
+
+.ExternalInputModal-tbody .ExternalInputModal-tr:hover {
+  background: var(--puck-color-grey-11);
+  color: var(--puck-color-azure-4);
+  cursor: pointer;
+  position: relative;
+  margin-left: -5px;
+}
+
+.ExternalInputModal-tbody
+  .ExternalInputModal-tr:hover
+  .ExternalInputModal-td:first-of-type {
+  border-left: 4px solid var(--puck-color-azure-4);
+  padding-left: 20px;
+}
+
+.ExternalInputModal-tableWrapper {
+  display: none;
+}
+
+.ExternalInputModal--hasData .ExternalInputModal-tableWrapper {
+  display: block;
+}
+
+.ExternalInputModal-loadingBanner {
+  display: none;
+  background-color: #ffffff90;
+  padding: 64px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.ExternalInputModal--isLoading .ExternalInputModal-loadingBanner {
+  display: flex;
+}
+
+.ExternalInputModal-noContentBanner {
+  display: none;
+  border-top: 1px solid var(--puck-color-grey-8);
+  padding: 24px;
+  text-align: center;
+}
+
+.ExternalInputModal--loaded:not(.ExternalInputModal--hasData)
+  .ExternalInputModal-noContentBanner {
+  display: block;
+}
+
+.ExternalInputModal-searchForm {
+  display: flex;
+  margin-left: auto;
+  height: 43px;
+  gap: 12px;
+}
+
+.ExternalInputModal-search {
+  display: flex;
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--puck-color-grey-8);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.ExternalInputModal-search:focus-within {
+  border-color: var(--puck-color-azure-4);
+  outline: var(--puck-color-azure-8) 4px solid;
+  outline-offset: 0;
+}
+
+.ExternalInputModal-searchIcon {
+  align-items: center;
+  background: var(--puck-color-grey-11);
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-right: 1px solid var(--puck-color-grey-8);
+  color: var(--puck-color-grey-6);
+  display: flex;
+  justify-content: center;
+  padding: 12px 15px;
+}
+
+.ExternalInputModal-searchIconText {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.ExternalInputModal-searchInput {
+  border: none;
+  border-radius: 4px;
+  background: white;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 15px;
+  width: 100%;
+}
+
+.ExternalInputModal-searchInput:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
