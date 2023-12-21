@@ -8,28 +8,14 @@ import * as reactFeather from "react-feather";
 
 const getClassName = getClassNameFactory("Card", styles);
 
-const icons = Object.keys(reactFeather).reduce((acc, iconName) => {
-  if (typeof reactFeather[iconName] === "object") {
-    const El = reactFeather[iconName];
 
-    return {
-      ...acc,
-      [iconName]: <El />,
-    };
-  }
-
-  return acc;
-}, {});
-
-const iconOptions = Object.keys(reactFeather).map((iconName) => ({
-  label: iconName,
-  value: iconName,
-}));
 
 export type CardProps = {
   Name: string;
   Company: string;
-  Designation: string;
+  Designations: {
+    alt: string;
+  }[];
 
 };
 
@@ -38,20 +24,32 @@ export const Card: ComponentConfig<CardProps> = {
 
     Name: { type: "text" },
     Company: { type: "text" },
-    Designation: { type: "text" },
+
+    Designations: {
+      type: "array",
+      getItemSummary: (item, i) => item.alt || `Feature #${i}`,
+      defaultItemProps: {
+        alt: "",
+      },
+      arrayFields: {
+        alt: { type: "text" },
+      },
+    },
+
+
     
   },
-  // defaultProps: {
-  //   Cover:"default",
-  //   Name:"Name",
-  //   Company:"Company",
-  //   Designation:"Designation",
-  //   title: "Title",
-  //   description: "Description",
-  //   icon: "Feather",
-  //   mode: "flat",
-  // },
-  render: ({ Name, Company, Designation }) => {
+  defaultProps: {
+    Name:"Name",
+    Company:"Company",
+    Designations: [
+      {
+        alt: "",
+      },
+    ],
+
+  },
+  render: ({ Name, Company, Designations }) => {
 
     const [userData, setUserData] = useState<UserData | null>(null);
 
@@ -70,14 +68,19 @@ export const Card: ComponentConfig<CardProps> = {
     }, []);
 
     if(userData){
+      if(userData && userData.designation){
+        var transformedDesignations = userData.designation.map((designation) => ({
+          alt: designation
+        }));
+      }
+
     Card.defaultProps = {
       Name: userData && userData.first_name 
             ? userData.first_name + " " + userData.last_name
             : "Name",
       Company: userData && userData.companyID && userData.companyID.company_name
             ? userData.companyID.company_name : "Company Name",
-      Designation: userData && userData.designation
-            ? userData.designation.join(" | ") : "Designation",
+      Designations: transformedDesignations,
  
     };
   }
@@ -115,7 +118,20 @@ export const Card: ComponentConfig<CardProps> = {
               {Company}
               </div>
               <div className={getClassName("onetap_conn_personal_card_2")}>
-              {Designation}
+              {/* {Designation} */}
+                {Designations.map((item, i) => (
+                  <span key={i} className={getClassName("item")}>
+                    {item.alt}
+                    {i < Designations.length - 1 && " | "}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+
+            <div className={getClassName()}>
+              <div className={getClassName("items")}>
+                
               </div>
             </div>
 
