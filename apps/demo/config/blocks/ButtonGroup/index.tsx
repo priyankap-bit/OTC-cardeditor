@@ -5,9 +5,23 @@ import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import { Button } from "@/core/components/Button";
 import { Section } from "../../components/Section";
+import { useSelector } from "react-redux";
 
 const getClassName = getClassNameFactory("ButtonGroup", styles);
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily:string;
+  };
+};
 
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
+  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
+  
+  return { fontSize, fontColor, bgColor ,fontfamily};
+};
 export type ButtonGroupProps = {
   align?: string;
   buttons: { label: string; href: string; variant: "primary" | "secondary" }[];
@@ -47,8 +61,10 @@ export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
     buttons: [{ label: "Learn more", href: "#", variant: "primary" }],
   },
   render: ({ align, buttons }) => {
+    const sizevalue = Gloabalfontsize();
+
     return (
-      <Section className={getClassName({ center: align === "center" })}>
+      <Section style={{backgroundColor:sizevalue.bgColor}} className={getClassName({ center: align === "center" })}>
         <div className={getClassName("actions")}>
           {buttons.map((button, i) => (
             <Button

@@ -2,7 +2,22 @@ import React from "react";
 
 import { ComponentConfig } from "@/core";
 import { Section } from "../../components/Section";
+import { useSelector } from "react-redux";
 
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily:string;
+  };
+};
+
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
+  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
+  
+  return { fontSize, fontColor, bgColor ,fontfamily};
+};
 export type TextProps = {
   align: "left" | "center" | "right";
   text?: string;
@@ -48,15 +63,18 @@ export const Text: ComponentConfig<TextProps> = {
     color: "default",
   },
   render: ({ align, color, text, size, padding, maxWidth }) => {
+    const globalvalue = Gloabalfontsize();
+
     return (
-      <Section padding={padding} maxWidth={maxWidth}>
+      <Section style={{backgroundColor:globalvalue.bgColor}} padding={padding} maxWidth={maxWidth}>
         <span
           style={{
-            color: color === "default" ? "inherit" : "var(--puck-color-grey-4)",
+            color: `${globalvalue.fontColor}`,
             display: "flex",
             textAlign: align,
             width: "100%",
-            fontSize: size === "m" ? "20px" : "16px",
+            fontSize:`${globalvalue.fontSize}px`,
+            fontFamily:globalvalue.fontfamily,
             fontWeight: 300,
             maxWidth,
             marginLeft: "auto",
