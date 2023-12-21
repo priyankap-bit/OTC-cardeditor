@@ -38,9 +38,7 @@ export type CardProps = {
 export const Card: ComponentConfig<CardProps> = {
   
   fields: {
-
     Name: { type: "text" },
-    size: { type: "text" },
     Company: { type: "text" },
 
     Designations: {
