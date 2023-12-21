@@ -9,7 +9,9 @@ import { scrollIntoView } from "@/core/lib/scroll-into-view";
 
 import ReactFromJSON from "react-from-json";
 import { PuckAction } from "@/core/reducer";
-
+import store from '../../core/components/Redux/Store/index';
+import { Provider } from 'react-redux';
+import {GlobalTools} from "@/core/components/GlobalTools/index"
 const dataAttr = "data-puck-heading-analyzer-id";
 
 const getOutline = ({
@@ -191,6 +193,9 @@ const HeadingOutlineAnalyer = ({
           />
         </OutlineList>
       </SidebarSection>
+      <Provider store={store}>
+      <GlobalTools/>
+      </Provider>
     </>
   );
 };

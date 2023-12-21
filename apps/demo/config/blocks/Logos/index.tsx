@@ -4,9 +4,23 @@ import { ComponentConfig } from "@/core";
 import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import { Section } from "../../components/Section";
+import { useSelector } from "react-redux";
 
 const getClassName = getClassNameFactory("Logos", styles);
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily:string;
+  };
+};
 
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
+  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
+  
+  return { fontSize, fontColor, bgColor ,fontfamily};
+};
 export type LogosProps = {
   logos: {
     alt: string;
@@ -59,8 +73,10 @@ export const Logos: ComponentConfig<LogosProps> = {
     ],
   },
   render: ({ logos }) => {
+    const globalvalue = Gloabalfontsize();
+
     return (
-      <Section className={getClassName()}>
+      <Section style={{backgroundColor:globalvalue.bgColor}} className={getClassName()}>
         <div className={getClassName("items")}>
           {logos.map((item, i) => (
             <div key={i} className={getClassName("item")}>

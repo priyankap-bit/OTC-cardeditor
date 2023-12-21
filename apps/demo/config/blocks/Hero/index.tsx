@@ -6,9 +6,23 @@ import { getClassNameFactory } from "@/core/lib";
 import { Button } from "@/core/components/Button";
 import { Section } from "../../components/Section";
 import { quotes } from "./quotes";
+import { useSelector } from "react-redux";
 
 const getClassName = getClassNameFactory("Hero", styles);
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily:string;
+  };
+};
 
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
+  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
+  
+  return { fontSize, fontColor, bgColor ,fontfamily};
+};
 export type HeroProps = {
   quote?: { index: number; label: string };
   title: string;
@@ -141,9 +155,11 @@ export const Hero: ComponentConfig<HeroProps> = {
     // Empty state allows us to test that components support hooks
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [_] = useState(0);
+    const globalvalue = Gloabalfontsize();
 
     return (
       <Section
+      style={{backgroundColor:globalvalue.bgColor}}
         padding={padding}
         className={getClassName({
           left: align === "left",
@@ -166,8 +182,8 @@ export const Hero: ComponentConfig<HeroProps> = {
 
         <div className={getClassName("inner")}>
           <div className={getClassName("content")}>
-            <h1>{title}</h1>
-            <p className={getClassName("subtitle")}>{description}</p>
+            <h1 style={{fontSize:globalvalue.fontSize , color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}}>{title}</h1>
+            <p style={{fontSize:globalvalue.fontSize , color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("subtitle")}>{description}</p>
             <div className={getClassName("actions")}>
               {buttons.map((button, i) => (
                 <Button
