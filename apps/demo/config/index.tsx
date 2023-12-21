@@ -8,6 +8,7 @@ import { Flex, FlexProps } from "./blocks/Flex";
 import { Logos, LogosProps } from "./blocks/Logos";
 import { Stats, StatsProps } from "./blocks/Stats";
 import { Text, TextProps } from "./blocks/Text";
+import { Image, ImageProps } from "./blocks/Image";
 import { VerticalSpace, VerticalSpaceProps } from "./blocks/VerticalSpace";
 
 import Root, { RootProps } from "./root";
@@ -22,6 +23,7 @@ type Props = {
   Logos: LogosProps;
   Stats: StatsProps;
   Text: TextProps;
+  Image: ImageProps;
   VerticalSpace: VerticalSpaceProps;
 };
 
@@ -39,7 +41,7 @@ export const conf: Config<
       components: ["Columns", "Flex", "VerticalSpace"],
     },
     typography: {
-      components: ["Heading", "Text"],
+      components: ["Heading", "Text", "Image"],
     },
     interactive: {
       title: "Actions",
@@ -56,6 +58,7 @@ export const conf: Config<
     Logos,
     Stats,
     Text,
+    Image,
     VerticalSpace,
   },
 };
