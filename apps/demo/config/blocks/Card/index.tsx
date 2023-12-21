@@ -56,7 +56,7 @@ export const Card: ComponentConfig<CardProps> = {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("http://localhost:5001/api/v1/admin/getaUser/tarun.syndell@gmail.com");
+          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/tarun.syndell@gmail.com");
           const data = await response.json();
           setUserData(data);
         } catch (error) {
