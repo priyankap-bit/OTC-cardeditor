@@ -118,7 +118,6 @@ export const ImageGallery: ComponentConfig<ImageGalleryProps> = {
                                     name={name}
                                     type="file"
                                     accept="image/*"
-                                    multiple
                                     style={{ display: 'none' }} // Hide the default file input
                                     onChange={handleImageChange}
                                 />

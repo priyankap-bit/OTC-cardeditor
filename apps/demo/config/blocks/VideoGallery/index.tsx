@@ -17,20 +17,6 @@ export type VideoGalleryProps = {
     }[];
 };
 
-let base64Video: any;
-
-//This is use to provide uploaded file link.
-const base64ToBlob = (base64String) => {
-    const decodedImage = atob(base64String);
-    const arrayBuffer = new ArrayBuffer(decodedImage.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-
-    for (let i = 0; i < decodedImage.length; i++) {
-        uint8Array[i] = decodedImage.charCodeAt(i);
-    }
-
-    return new Blob([uint8Array], { type: 'image/png' });
-};
 
 //This is use for show uploaded file carousel.
 
