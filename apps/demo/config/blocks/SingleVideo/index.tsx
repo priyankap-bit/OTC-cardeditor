@@ -15,12 +15,13 @@ export type SingleVideoProps = {
 
 
 const renderUploadedVideos = (item) => {
-    console.log(item);
-    
-    return <video width={550} height={300} style={{ borderRadius: '10px' }} controls>
-        <source src={`data:video/mp4;base64,${item}`} type="video/mp4" />
-        Your browser does not support the video tag.
-    </video>
+    const videoId = item.replace('https://www.youtube.com', '');
+
+    // Now videoId contains "Ph9WRhlPacY&list=RDcj1jnyy3Egw&index=12"
+    console.log(videoId,"//////");
+
+    return <iframe width={500} height={350} src={`https://www.youtube.com/embed${videoId}`} />
+
 };
 const selectOption = [
     { label: "YouTub", value: "YouTub" },

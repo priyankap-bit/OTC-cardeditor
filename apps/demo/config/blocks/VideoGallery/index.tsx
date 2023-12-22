@@ -31,11 +31,9 @@ const renderUploadedVideos = (item) => {
                     Your browser does not support the video tag.
                 </video>
             ) : (
-                
-                <video key={index} width={550} height={300} style={{ borderRadius: '10px' }} controls>
-                    <source src={`data:video/mp4;base64,${videoData.upload}`} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+
+                <iframe key={index} width={500} height={350} src={`https://www.youtube.com/embed${videoData.upload.replace('https://www.youtube.com', '')}`} />
+
             )
         ));
     } else {
@@ -50,10 +48,7 @@ const renderUploadedVideos = (item) => {
                                 Your browser does not support the video tag.
                             </video>
                         ) : (
-                            <video width={550} height={300} style={{ borderRadius: '10px' }} controls>
-                                <source src={`data:video/mp4;base64,${videoData.upload}`} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                            <iframe key={index} width={500} height={350} src={`https://www.youtube.com/embed${videoData.upload.replace('https://www.youtube.com', '')}`} />
                         )}
                     </Carousel.Item>
                 ))}
@@ -86,7 +81,7 @@ export const VideoGallery: ComponentConfig<VideoGalleryProps> = {
     render: ({ carouselVideo }) => {
 
         return (
-            <Section style={{margin:"10px"}}>
+            <Section style={{ margin: "10px" }}>
                 <span style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
                     {carouselVideo == undefined ? <div style={{ height: "200px" }}>
                         <span style={{ fontSize: "20px", fontWeight: "700" }}>SINGLE VIDEO</span>
