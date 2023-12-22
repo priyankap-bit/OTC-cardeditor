@@ -10,6 +10,7 @@ import { Stats, StatsProps } from "./blocks/Stats";
 import { Text, TextProps } from "./blocks/Text";
 import { Image, ImageProps } from "./blocks/Image";
 import { VerticalSpace, VerticalSpaceProps } from "./blocks/VerticalSpace";
+import { Testimonial, TestimonialProps} from "./blocks/Testimonial"
 
 import Root, { RootProps } from "./root";
 
@@ -25,6 +26,7 @@ type Props = {
   Text: TextProps;
   Image: ImageProps;
   VerticalSpace: VerticalSpaceProps;
+  Testimonial: TestimonialProps;
 };
 
 // We avoid the name config as next gets confused
@@ -60,6 +62,7 @@ export const conf: Config<
     Text,
     Image,
     VerticalSpace,
+    Testimonial,
   },
 };
 
