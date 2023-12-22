@@ -5,6 +5,9 @@ import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import * as reactFeather from "react-feather";
 import { useSelector } from "react-redux";
+import useGlobalFontSize from "./useGlobalFontSize";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Card", styles);
 type RootState = {
@@ -12,16 +15,14 @@ type RootState = {
     fontSize: number;
     fontColor: string;
     bgColor: string;
-    fontfamily:string;
+    fontfamily: string;
   };
 };
 
-const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
-  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
-  
-  return { fontSize, fontColor, bgColor ,fontfamily};
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily: string; } => {
+  const { fontSize, fontColor, bgColor, fontfamily } = useSelector((state: RootState) => state.app);
+  return { fontSize, fontColor, bgColor, fontfamily };
 };
-
 
 
 
@@ -35,9 +36,12 @@ export type CardProps = {
 
 };
 
+
+
 export const Card: ComponentConfig<CardProps> = {
-  
+
   fields: {
+
     Name: { type: "text" },
     Company: { type: "text" },
 
@@ -67,7 +71,7 @@ export const Card: ComponentConfig<CardProps> = {
   },
   render: ({ Name, Company, Designations }) => {
     const sizevalue = Gloabalfontsize();
-    const [userData, setUserData] = useState<UserData | null>(null);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
       const fetchData = async () => {
