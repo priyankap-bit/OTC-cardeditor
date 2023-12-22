@@ -5,6 +5,9 @@ import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import * as reactFeather from "react-feather";
 import { useSelector } from "react-redux";
+import useGlobalFontSize from "./useGlobalFontSize";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Card", styles);
 type RootState = {
@@ -12,16 +15,14 @@ type RootState = {
     fontSize: number;
     fontColor: string;
     bgColor: string;
-    fontfamily:string;
+    fontfamily: string;
   };
 };
 
-const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
-  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
-  
-  return { fontSize, fontColor, bgColor ,fontfamily};
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily: string; } => {
+  const { fontSize, fontColor, bgColor, fontfamily } = useSelector((state: RootState) => state.app);
+  return { fontSize, fontColor, bgColor, fontfamily };
 };
-
 
 
 const icons = Object.keys(reactFeather).reduce((acc, iconName) => {
@@ -50,14 +51,20 @@ export type CardProps = {
   description: string;
   icon?: "Feather";
   mode: "flat" | "card";
-  size: string;
+  size: any;
+  // upload: string;
 };
 
+
+
 export const Card: ComponentConfig<CardProps> = {
-  
+
   fields: {
+
     Name: { type: "text" },
-    size: { type: "text" },
+    size: {
+      type: "text"
+    },
     Company: { type: "text" },
     Designation: { type: "text" },
     title: { type: "text" },
@@ -73,6 +80,8 @@ export const Card: ComponentConfig<CardProps> = {
         { label: "flat", value: "flat" },
       ],
     },
+
+
   },
   defaultProps: {
     Name: "Name",
@@ -82,18 +91,21 @@ export const Card: ComponentConfig<CardProps> = {
     description: "Description",
     icon: "Feather",
     mode: "flat",
-    size:'1'
+    size: '',
+    // upload: '',
+
   },
+
   render: ({ title, icon, description, mode, Name, Company, Designation, size }) => {
 
     const sizevalue = Gloabalfontsize();
-    // console.log(sizevalue.fontSize);
- 
+    // console.log(carouselVideo,"video......");
+
     return (
 
 
       <>
-        <div style={{backgroundColor:sizevalue.bgColor}} className={getClassName("onetap_conn_card_container")}>
+        <div style={{ backgroundColor: sizevalue.bgColor }} className={getClassName("onetap_conn_card_container")}>
           <div className={getClassName("onetap_conn_personal_card")}>
             <div className={getClassName("onetap_conn_card_image_container")}>
               <img
@@ -120,16 +132,17 @@ export const Card: ComponentConfig<CardProps> = {
             </div>
 
             <div className={getClassName("onetap_conn_personal_card_info")}>
-              <div style={{ fontSize: `${sizevalue.fontSize}px`, color:sizevalue.fontColor ,fontFamily:sizevalue.fontfamily}} className={getClassName("onetap_conn_personal_card_info_name")}>
+              <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_info_name")}>
                 {Name}
               </div>
-              <div style={{ fontSize: `${sizevalue.fontSize}px`, color:sizevalue.fontColor, fontFamily:sizevalue.fontfamily}} className={getClassName("onetap_conn_personal_card_info_subname")}>
+              <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_info_subname")}>
                 {Company}
               </div>
-              <div style={{ fontSize: `${sizevalue.fontSize}px` , color:sizevalue.fontColor, fontFamily:sizevalue.fontfamily}} className={getClassName("onetap_conn_personal_card_2")}>
+              <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_2")}>
                 {Designation}
               </div>
             </div>
+
             <div style={{ position: "relative" }} className="onetap_conn_personal_card_actions">
               {<img src={'upgradeicon'} className="upgrade-icon-for-card" alt="Upgrade Icon" />}
 
@@ -254,10 +267,10 @@ export const Card: ComponentConfig<CardProps> = {
         </div>
 
 
-        <div style={{backgroundColor:sizevalue.bgColor}} className={getClassName({ [mode]: mode })}>
+        <div style={{ backgroundColor: sizevalue.bgColor }} className={getClassName({ [mode]: mode })}>
           <div className={getClassName("icon")}>{icons[icon]}</div>
-          <div style={{ fontSize: `${sizevalue.fontSize}px`, color:sizevalue.fontColor ,fontFamily:sizevalue.fontfamily}}  className={getClassName("title")}>{title}</div>
-          <div style={{ fontSize: `${sizevalue.fontSize}px`, color:sizevalue.fontColor ,fontFamily:sizevalue.fontfamily}} className={getClassName("description")}>{description}</div>
+          <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("title")}>{title}</div>
+          <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("description")}>{description}</div>
         </div>
       </>
     );

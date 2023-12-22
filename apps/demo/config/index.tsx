@@ -11,10 +11,13 @@ import { Text, TextProps } from "./blocks/Text";
 import { VerticalSpace, VerticalSpaceProps } from "./blocks/VerticalSpace";
 
 import Root, { RootProps } from "./root";
-
+import { ImageGallery, ImageGalleryProps } from "./blocks/ImageGallery";
+import {SingleVideo,SingleVideoProps} from "./blocks/SingleVideo"
+import {VideoGallery,VideoGalleryProps} from "./blocks/VideoGallery"
 type Props = {
   ButtonGroup: ButtonGroupProps;
   Card: CardProps;
+  ImageGallery:ImageGalleryProps;
   Columns: ColumnsProps;
   Hero: HeroProps;
   Heading: HeadingProps;
@@ -23,6 +26,8 @@ type Props = {
   Stats: StatsProps;
   Text: TextProps;
   VerticalSpace: VerticalSpaceProps;
+  SingleVideo:SingleVideoProps;
+  VideoGallery:VideoGalleryProps;
 };
 
 // We avoid the name config as next gets confused
@@ -39,7 +44,7 @@ export const conf: Config<
       components: ["Columns", "Flex", "VerticalSpace"],
     },
     typography: {
-      components: ["Heading", "Text"],
+      components: ["Heading", "Text","ImageGallery","SingleVideo","VideoGallery"],
     },
     interactive: {
       title: "Actions",
@@ -49,6 +54,7 @@ export const conf: Config<
   components: {
     ButtonGroup,
     Card,
+    ImageGallery,
     Columns,
     Hero,
     Heading,
@@ -57,6 +63,8 @@ export const conf: Config<
     Stats,
     Text,
     VerticalSpace,
+    SingleVideo,
+    VideoGallery
   },
 };
 
