@@ -10,6 +10,7 @@ import { Stats, StatsProps } from "./blocks/Stats";
 import { Text, TextProps } from "./blocks/Text";
 import { Image, ImageProps } from "./blocks/Image";
 import { VerticalSpace, VerticalSpaceProps } from "./blocks/VerticalSpace";
+import { Testimonial, TestimonialProps} from "./blocks/Testimonial"
 
 import Root, { RootProps } from "./root";
 import { ImageGallery, ImageGalleryProps } from "./blocks/ImageGallery";
@@ -30,6 +31,7 @@ type Props = {
   VerticalSpace: VerticalSpaceProps;
   SingleVideo:SingleVideoProps;
   VideoGallery:VideoGalleryProps;
+  Testimonial: TestimonialProps;
 };
 
 // We avoid the name config as next gets confused
@@ -68,6 +70,7 @@ export const conf: Config<
     VerticalSpace,
     SingleVideo,
     VideoGallery
+    Testimonial,
   },
 };
 

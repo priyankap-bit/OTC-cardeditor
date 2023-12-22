@@ -1,0 +1,99 @@
+.Testimonial {
+  display: flex;
+  gap: 24px;
+  grid-template-columns: repeat(12, 1fr);
+  flex-direction: column;
+  min-height: 0; /* NEW */
+  min-width: 0; /* NEW; needed for Firefox */
+}
+.Testimonial-contents {
+  text-align: center;
+  background-color: #252b48;
+  margin: 20px 0px;
+  /* width: 1274px; */
+  padding-bottom: 40px;
+  height: 400px;
+}
+
+/* CSS talk bubble */
+.Testimonial-talk-bubble {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: #445069;
+  color: #ffff;
+  width: 400px;
+}
+
+.Testimonial-talk-bubble {
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+/* .Testimonial-talk-bubble.border.btm-left:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+} */
+.Testimonial-talk-bubble:after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0px;
+  right: auto;
+  top: auto;
+  bottom: -20px;
+  border: 22px solid;
+  border-color: transparent transparent transparent #445069;
+}
+
+/* talk bubble contents */
+.Testimonial-talktext {
+  padding: 1em;
+  text-align: left;
+  line-height: 1.5em;
+}
+.Testimonial-p {
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  width: 30px;
+}
+
+.Testimonial-info {
+  display: flex;
+  color: #ffff;
+  margin-right: 180px;
+  /* position: absolute;
+  left: 38%; */
+  gap: 20px;
+  justify-content: center;
+}
+
+/* .Testimonial-text-info{
+  margin-right: 255px;
+} */
+
+.Testimonial-img {
+  border-radius: 40px;
+  width: 50px;
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .Testimonial {
+    display: grid;
+  }
+}
