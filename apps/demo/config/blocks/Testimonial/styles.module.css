@@ -76,9 +76,15 @@
   display: flex;
   color: #ffff;
   margin-right: 180px;
+  /* position: absolute;
+  left: 38%; */
   gap: 20px;
   justify-content: center;
 }
+
+/* .Testimonial-text-info{
+  margin-right: 255px;
+} */
 
 .Testimonial-img {
   border-radius: 40px;

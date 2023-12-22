@@ -165,9 +165,22 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                     <div className={getClassName("text-info")}>
                       <div
                         className={getClassName("name")}
-                        style={{ textAlign: "left", fontWeight: "bold" }}
+                        style={{ textAlign: "left"}}
+                      >
+                        {/* {item.name} */}
+                        <span
+                        style={{
+                          fontWeight: "bold",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          justifyContent: "center",
+                          maxWidth: "100%",
+                          wordWrap: "break-word",
+                        }}
+                        className={getClassName("p")}
                       >
                         {item.name}
+                      </span>
                       </div>
                       <div
                         className={getClassName("title")}
@@ -220,9 +233,22 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                 <div className={getClassName("text-info")}>
                   <div
                     className={getClassName("name")}
-                    style={{ textAlign: "left", fontWeight: "bold" }}
+                    style={{textAlign: "left",  }}
                   >
-                    {item.name}
+                    {/* {item.name} */}
+                    <span
+                        style={{
+                          fontWeight: "bold",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          justifyContent: "center",
+                          maxWidth: "100%",
+                          wordWrap: "break-word",
+                        }}
+                        className={getClassName("p")}
+                      >
+                        {item.name}
+                      </span>
                   </div>
                   <div
                     className={getClassName("title")}
