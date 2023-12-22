@@ -66,7 +66,7 @@ export const Text: ComponentConfig<TextProps> = {
     const globalvalue = Gloabalfontsize();
 
     return (
-      <Section style={{backgroundColor:globalvalue.bgColor}} padding={padding} maxWidth={maxWidth}>
+      <Section padding={padding} maxWidth={maxWidth}>
         <span
           style={{
             color: `${globalvalue.fontColor}`,

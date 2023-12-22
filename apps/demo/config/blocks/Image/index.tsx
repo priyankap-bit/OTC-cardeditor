@@ -6,6 +6,8 @@ export type ImageProps = {
   image: string; // Assuming the image is a Base64-encoded string
 };
 
+let base64Image: any;
+
 const base64ToBlob = (base64String) => {
   const decodedImage = atob(base64String);
   const arrayBuffer = new ArrayBuffer(decodedImage.length);
@@ -28,7 +30,7 @@ export const Image: ComponentConfig<ImageProps> = {
           const reader = new FileReader();
 
           reader.onload = () => {
-            const base64Image = reader.result.split(',')[1]; // Extract base64 data
+            base64Image = (reader.result as string).split(',')[1];
             onChange(base64Image);
           };
 

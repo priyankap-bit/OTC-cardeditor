@@ -67,7 +67,7 @@ export const Card: ComponentConfig<CardProps> = {
   },
   render: ({ Name, Company, Designations }) => {
     const sizevalue = Gloabalfontsize();
-    const [userData, setUserData] = useState<UserData | null>(null);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
       const fetchData = async () => {
