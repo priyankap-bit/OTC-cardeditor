@@ -3,6 +3,8 @@ import { ComponentConfig } from "@/core/types/Config";
 import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import { Section } from "../../components/Section";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Testimonial", styles);
 
@@ -119,46 +121,47 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     return (
       // <div className={getClassName()} style={{ textAlign: "center", maxWidth:"1280px", marginLeft:"auto", marginRight:"auto" }}>
       <Section>
-        {items &&
-          items.map((item, i) => (
-            <>
-              <div key={i} className={getClassName("contents")}>
-                {/* <div className={getClassName("content")}>{item.content}</div> */}
-                <div className={getClassName("talk-bubble")}>
-                  <div className={getClassName("talktext")}>
-                    <span
-                      style={{
-                        fontWeight: 300,
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        justifyContent: "center",
-                        maxWidth: "100%",
-                        wordWrap: "break-word",
-                      }}
-                      className={getClassName("p")}
-                    >
-                      {item.content}
-                    </span>
+        {items && items.length > 1 ? (
+          <Carousel
+            prevIcon={null} // Set to null to hide the previous arrow
+            nextIcon={null} // Set to null to hide the next arrow
+          >
+            {items.map((item, i) => (
+              <Carousel.Item key={i}>
+                <div className={getClassName("contents")}>
+                  <div className={getClassName("talk-bubble")}>
+                    <div className={getClassName("talktext")}>
+                      <span
+                        style={{
+                          fontWeight: 300,
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          justifyContent: "center",
+                          maxWidth: "100%",
+                          wordWrap: "break-word",
+                        }}
+                        className={getClassName("p")}
+                      >
+                        {item.content}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className={getClassName("info")}>
-                  <div className={getClassName("image")}>
-                    {item.image ? (
-                      <img
-                        src={`data:image/png;base64,${item.image}`}
-                        alt="Preview"
-                        className={getClassName("img")}
-                        //   style={{ width: "300px", height: "300px" }}
-                      />
-                    ) : (
-                      <img
-                        src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg"
-                        alt="Default Preview"
-                        className={getClassName("img")}
-                        //   style={{ width: "300px", height: "300px" }}
-                      />
-                    )}
-                  </div>
+                  <div className={getClassName("info")}>
+                    <div className={getClassName("image")}>
+                      {item.image ? (
+                        <img
+                          src={`data:image/png;base64,${item.image}`}
+                          alt="Preview"
+                          className={getClassName("img")}
+                        />
+                      ) : (
+                        <img
+                          src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg"
+                          alt="Default Preview"
+                          className={getClassName("img")}
+                        />
+                      )}
+                    </div>
                     <div className={getClassName("text-info")}>
                       <div
                         className={getClassName("name")}
@@ -173,10 +176,65 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                         {item.title}
                       </div>
                     </div>
+                  </div>
+                </div>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        ) : (
+          items.map((item, i) => (
+            <div key={i} className={getClassName("contents")}>
+              <div className={getClassName("talk-bubble")}>
+                <div className={getClassName("talktext")}>
+                  <span
+                    style={{
+                      fontWeight: 300,
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                      justifyContent: "center",
+                      maxWidth: "100%",
+                      wordWrap: "break-word",
+                    }}
+                    className={getClassName("p")}
+                  >
+                    {item.content}
+                  </span>
                 </div>
               </div>
-            </>
-          ))}
+              <div className={getClassName("info")}>
+                <div className={getClassName("image")}>
+                  {item.image ? (
+                    <img
+                      src={`data:image/png;base64,${item.image}`}
+                      alt="Preview"
+                      className={getClassName("img")}
+                    />
+                  ) : (
+                    <img
+                      src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg"
+                      alt="Default Preview"
+                      className={getClassName("img")}
+                    />
+                  )}
+                </div>
+                <div className={getClassName("text-info")}>
+                  <div
+                    className={getClassName("name")}
+                    style={{ textAlign: "left", fontWeight: "bold" }}
+                  >
+                    {item.name}
+                  </div>
+                  <div
+                    className={getClassName("title")}
+                    style={{ textAlign: "left" }}
+                  >
+                    {item.title}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
       </Section>
     );
   },
