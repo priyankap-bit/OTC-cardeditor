@@ -119,12 +119,15 @@ export const Card: ComponentConfig<CardProps> = {
               </div>
               <div className={getClassName("onetap_conn_personal_card_2")}>
               {/* {Designation} */}
-                {Designations.map((item, i) => (
-                  <span key={i} className={getClassName("item")}>
-                    {item.alt}
-                    {i < Designations.length - 1 && " | "}
-                  </span>
-                ))}
+
+              {Designations && Designations.map((item, i) => (
+                    <span key={i} className={getClassName("item")}>
+                      {item.alt}
+                      {i < Designations.length - 1 && " | "}
+                    </span>
+                  ))}
+
+
               </div>
             </div>
 

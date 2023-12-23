@@ -998,13 +998,13 @@
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
 
-"@measured/puck-plugin-heading-analyzer@file:/Users/syndell-051/Downloads/puck-main/packages/plugin-heading-analyzer":
+"@measured/puck-plugin-heading-analyzer@file:/Users/syndell-051/Documents/OTC-cardeditor-0/packages/plugin-heading-analyzer":
   version "0.12.0"
   resolved "file:packages/plugin-heading-analyzer"
   dependencies:
     react-from-json "^0.7.2"
 
-"@measured/puck@*", "@measured/puck@^0.12.0", "@measured/puck@file:/Users/syndell-051/Downloads/puck-main/packages/core":
+"@measured/puck@*", "@measured/puck@^0.12.0", "@measured/puck@file:/Users/syndell-051/Documents/OTC-cardeditor-0/packages/core":
   version "0.12.0"
   resolved "file:packages/core"
   dependencies:
@@ -3537,7 +3537,7 @@ create-jest@^29.7.0:
     jest-util "^29.7.0"
     prompts "^2.0.1"
 
-"create-puck-app@file:/Users/syndell-051/Downloads/puck-main/packages/create-puck-app":
+"create-puck-app@file:/Users/syndell-051/Documents/OTC-cardeditor-0/packages/create-puck-app":
   version "0.12.0"
   resolved "file:packages/create-puck-app"
   dependencies:
@@ -4139,7 +4139,7 @@ delegates@^1.0.0:
   resolved "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz"
   integrity sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==
 
-"demo@file:/Users/syndell-051/Downloads/puck-main/apps/demo":
+"demo@file:/Users/syndell-051/Documents/OTC-cardeditor-0/apps/demo":
   version "1.0.0"
   resolved "file:apps/demo"
   dependencies:
@@ -4208,7 +4208,7 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-"docs@file:/Users/syndell-051/Downloads/puck-main/apps/docs":
+"docs@file:/Users/syndell-051/Documents/OTC-cardeditor-0/apps/docs":
   version "1.0.0"
   resolved "file:apps/docs"
   dependencies:
@@ -4653,7 +4653,7 @@ escodegen@^2.0.0, escodegen@^2.1.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-custom@*, "eslint-config-custom@file:/Users/syndell-051/Downloads/puck-main/packages/eslint-config-custom":
+eslint-config-custom@*, "eslint-config-custom@file:/Users/syndell-051/Documents/OTC-cardeditor-0/packages/eslint-config-custom":
   version "0.0.0"
   resolved "file:packages/eslint-config-custom"
   dependencies:
@@ -9173,7 +9173,7 @@ next-mdx-remote@^4.2.1:
     vfile "^5.3.0"
     vfile-matter "^3.0.1"
 
-"next-recipe@file:/Users/syndell-051/Downloads/puck-main/recipes/next":
+"next-recipe@file:/Users/syndell-051/Documents/OTC-cardeditor-0/recipes/next":
   version "1.0.0"
   resolved "file:recipes/next"
   dependencies:
@@ -10905,7 +10905,7 @@ remark-rehype@^10.0.0:
     mdast-util-to-hast "^12.1.0"
     unified "^10.0.0"
 
-"remix-recipe@file:/Users/syndell-051/Downloads/puck-main/recipes/remix":
+"remix-recipe@file:/Users/syndell-051/Documents/OTC-cardeditor-0/recipes/remix":
   version "1.0.0"
   resolved "file:recipes/remix"
   dependencies:
@@ -12219,7 +12219,7 @@ tsconfig-paths@^4.0.0, tsconfig-paths@^4.1.2:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tsconfig@*, "tsconfig@file:/Users/syndell-051/Downloads/puck-main/packages/tsconfig":
+tsconfig@*, "tsconfig@file:/Users/syndell-051/Documents/OTC-cardeditor-0/packages/tsconfig":
   version "0.0.0"
   resolved "file:packages/tsconfig"
   dependencies:
@@ -12240,7 +12240,7 @@ tslib@^2.0.1, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.4.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
-tsup-config@*, "tsup-config@file:/Users/syndell-051/Downloads/puck-main/packages/tsup-config":
+tsup-config@*, "tsup-config@file:/Users/syndell-051/Documents/OTC-cardeditor-0/packages/tsup-config":
   version "0.0.0"
   resolved "file:packages/tsup-config"
   dependencies:
