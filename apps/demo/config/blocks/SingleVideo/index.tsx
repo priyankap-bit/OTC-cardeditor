@@ -2,7 +2,7 @@
 import React from "react";
 import { ComponentConfig } from "@/core/types/Config";
 import { Carousel } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import { Section } from "../../components/Section";
 
 

@@ -7,7 +7,7 @@ import * as reactFeather from "react-feather";
 import { useSelector } from "react-redux";
 import useGlobalFontSize from "./useGlobalFontSize";
 import { Carousel } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Card", styles);
 type RootState = {
