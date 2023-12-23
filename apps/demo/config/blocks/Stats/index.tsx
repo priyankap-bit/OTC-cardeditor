@@ -5,9 +5,23 @@ import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import { Section } from "../../components/Section";
 import * as reactFeather from "react-feather";
+import { useSelector } from "react-redux";
 
 const getClassName = getClassNameFactory("Stats", styles);
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily:string;
+  };
+};
 
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
+  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
+  
+  return { fontSize, fontColor, bgColor ,fontfamily};
+};
 const icons = Object.keys(reactFeather).reduce((acc, iconName) => {
   if (typeof reactFeather[iconName] === "object") {
     const El = reactFeather[iconName];
@@ -57,13 +71,15 @@ export const Stats: ComponentConfig<StatsProps> = {
     ],
   },
   render: ({ items }) => {
+    const globalvalue = Gloabalfontsize();
+
     return (
-      <Section className={getClassName()} maxWidth={"916px"}>
-        <div className={getClassName("items")}>
+      <Section style={{backgroundColor:globalvalue.bgColor}} className={getClassName()} maxWidth={"916px"}>
+        <div  className={getClassName("items")}>
           {items.map((item, i) => (
             <div key={i} className={getClassName("item")}>
-              <div className={getClassName("label")}>{item.title}</div>
-              <div className={getClassName("value")}>{item.description}</div>
+              <div style={{fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("label")}>{item.title}</div>
+              <div style={{fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("value")}>{item.description}</div>
             </div>
           ))}
         </div>

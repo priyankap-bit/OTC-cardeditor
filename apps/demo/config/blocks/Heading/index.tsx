@@ -4,7 +4,23 @@ import { ComponentConfig } from "@/core";
 import { Heading as _Heading } from "@/core/components/Heading";
 import type { HeadingProps as _HeadingProps } from "@/core/components/Heading";
 import { Section } from "../../components/Section";
+import { useSelector } from "react-redux";
 
+
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily:string;
+  };
+};
+
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily:string;} => {
+  const { fontSize, fontColor, bgColor,fontfamily } = useSelector((state: RootState) => state.app);
+  
+  return { fontSize, fontColor, bgColor ,fontfamily};
+};
 export type HeadingProps = {
   align: "left" | "center" | "right";
   text?: string;
@@ -70,10 +86,12 @@ export const Heading: ComponentConfig<HeadingProps> = {
     rights:'true'
   },
   render: ({ align, text, size, level, padding, rights }) => {
+    const globalvalue = Gloabalfontsize();
+
     return (
-      <Section className={rights} padding={padding} >
+      <Section className={rights} padding={padding} style={{backgroundColor:globalvalue.bgColor}} >
         <_Heading size={size} rank={level as any}>
-          <span style={{ display: "block", textAlign: align, width: "100%" }}>
+          <span style={{ display: "block", textAlign: align, width: "100%" ,fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}}>
             {text}
           </span>
         </_Heading>

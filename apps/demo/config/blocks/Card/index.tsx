@@ -4,9 +4,26 @@ import { ComponentConfig } from "@/core/types/Config";
 import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import * as reactFeather from "react-feather";
-
+import { useSelector } from "react-redux";
+import useGlobalFontSize from "./useGlobalFontSize";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Card", styles);
+type RootState = {
+  app: {
+    fontSize: number;
+    fontColor: string;
+    bgColor: string;
+    fontfamily: string;
+  };
+};
+
+const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: string; fontfamily: string; } => {
+  const { fontSize, fontColor, bgColor, fontfamily } = useSelector((state: RootState) => state.app);
+  return { fontSize, fontColor, bgColor, fontfamily };
+};
+
 
 
 
@@ -19,7 +36,10 @@ export type CardProps = {
 
 };
 
+
+
 export const Card: ComponentConfig<CardProps> = {
+
   fields: {
 
     Name: { type: "text" },
@@ -50,13 +70,13 @@ export const Card: ComponentConfig<CardProps> = {
 
   },
   render: ({ Name, Company, Designations }) => {
-
-    const [userData, setUserData] = useState<UserData | null>(null);
+    const sizevalue = Gloabalfontsize();
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("http://localhost:5001/api/v1/admin/getaUser/tarun.syndell@gmail.com");
+          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/tarun.syndell@gmail.com");
           const data = await response.json();
           setUserData(data);
         } catch (error) {
@@ -87,7 +107,7 @@ export const Card: ComponentConfig<CardProps> = {
   if(userData){
     return (
       <>
-        <div className={getClassName("onetap_conn_card_container")}>
+        <div style={{ backgroundColor: sizevalue.bgColor }} className={getClassName("onetap_conn_card_container")}>
           <div className={getClassName("onetap_conn_personal_card")}>
             <div className={getClassName("onetap_conn_card_image_container")}>
               <img
@@ -111,13 +131,13 @@ export const Card: ComponentConfig<CardProps> = {
               </div>
             </div>
             <div className={getClassName("onetap_conn_personal_card_info")}>
-              <div className={getClassName("onetap_conn_personal_card_info_name")}>
+              <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_info_name")}>
               {Name}
               </div>
-              <div className={getClassName("onetap_conn_personal_card_info_subname")}>
+              <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_info_subname")}>
               {Company}
               </div>
-              <div className={getClassName("onetap_conn_personal_card_2")}>
+              <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_2")}>
               {/* {Designation} */}
 
               {Designations && Designations.map((item, i) => (

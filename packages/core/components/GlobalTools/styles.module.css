@@ -1,0 +1,28 @@
+.globalstyle-container{
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 11px;
+}
+
+.globalstyle-text{
+    font-size: 13px;
+    font-weight: 600;
+    color: #5a5a5a;
+}
+
+.globalstyle-input{
+    font-size: 15px;
+    font-weight: 600;
+    color: #5a5a5a;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+}
+
+.globalstyle-colorpikar{
+    width: 50%;
+    height: 36px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+}

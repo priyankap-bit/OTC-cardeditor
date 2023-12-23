@@ -8,13 +8,18 @@ import { Flex, FlexProps } from "./blocks/Flex";
 import { Logos, LogosProps } from "./blocks/Logos";
 import { Stats, StatsProps } from "./blocks/Stats";
 import { Text, TextProps } from "./blocks/Text";
+import { Image, ImageProps } from "./blocks/Image";
 import { VerticalSpace, VerticalSpaceProps } from "./blocks/VerticalSpace";
+import { Testimonial, TestimonialProps} from "./blocks/Testimonial"
 
 import Root, { RootProps } from "./root";
-
+import { ImageGallery, ImageGalleryProps } from "./blocks/ImageGallery";
+import {SingleVideo,SingleVideoProps} from "./blocks/SingleVideo"
+import {VideoGallery,VideoGalleryProps} from "./blocks/VideoGallery"
 type Props = {
   ButtonGroup: ButtonGroupProps;
   Card: CardProps;
+  ImageGallery:ImageGalleryProps;
   Columns: ColumnsProps;
   Hero: HeroProps;
   Heading: HeadingProps;
@@ -22,7 +27,11 @@ type Props = {
   Logos: LogosProps;
   Stats: StatsProps;
   Text: TextProps;
+  Image: ImageProps;
   VerticalSpace: VerticalSpaceProps;
+  SingleVideo:SingleVideoProps;
+  VideoGallery:VideoGalleryProps;
+  Testimonial: TestimonialProps;
 };
 
 // We avoid the name config as next gets confused
@@ -39,7 +48,7 @@ export const conf: Config<
       components: ["Columns", "Flex", "VerticalSpace"],
     },
     typography: {
-      components: ["Heading", "Text"],
+      components: ["Heading", "Text","Image","ImageGallery","SingleVideo","VideoGallery"],
     },
     interactive: {
       title: "Actions",
@@ -49,6 +58,7 @@ export const conf: Config<
   components: {
     ButtonGroup,
     Card,
+    ImageGallery,
     Columns,
     Hero,
     Heading,
@@ -56,7 +66,11 @@ export const conf: Config<
     Logos,
     Stats,
     Text,
+    Image,
     VerticalSpace,
+    SingleVideo,
+    VideoGallery
+    Testimonial,
   },
 };
 
