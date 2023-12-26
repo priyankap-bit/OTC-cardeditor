@@ -42,7 +42,10 @@
 }
 
 .Button--primary {
-  background: var(--puck-color-blue);
+  /* background: var(--puck-color-blue); */
+  background: #2572E6;
+  border: 1px solid #FFF;
+  border-radius: 4px;
 }
 
 .Button--primary:hover {
