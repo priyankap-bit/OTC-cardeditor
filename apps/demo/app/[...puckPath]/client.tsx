@@ -14,26 +14,41 @@ const isBrowser = typeof window !== "undefined";
 export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   // unique b64 key that updates each time we add / remove components
   const componentKey = Buffer.from(
-    `${Object.keys(config.components).join("-")}-${JSON.stringify(initialData)}`
+    `${Object.keys(config.components).join("-")}`
   ).toString("base64");
 
   const key = `puck-demo:${componentKey}:${path}`;
 
-  const [data] = useState<Data>(() => {
+  const [data, setData] = useState<Data | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userEmail = 'tarun.syndell@gmail.com'
+        const response = await fetch(
+          'http://localhost:5001/api/v1/admin/mockdata/'+userEmail
+        );
+        const jsonData = await response.json();
+        console.log("responseeee",jsonData);
+        
+        setData(jsonData[path] || undefined);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
     if (isBrowser) {
       const dataStr = localStorage.getItem(key);
 
       if (dataStr) {
-        return JSON.parse(dataStr);
+        setData(JSON.parse(dataStr));
+      } else {
+        fetchData();
       }
-
-      return initialData[path] || undefined;
     }
-  });
+  }, [key, path, isBrowser]);
 
-  // Normally this would happen on the server, but we can't
-  // do that because we're using local storage as a database
-  const [resolvedData, setResolvedData] = useState(data);
+  const [resolvedData, setResolvedData] = useState<Data | undefined>(data);
 
   useEffect(() => {
     if (data && !isEdit) {
@@ -43,20 +58,42 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
 
   useEffect(() => {
     if (!isEdit) {
-      const title = data?.root.props?.title || data.root.title;
+      const title = data?.root.props?.title || data?.root.title;
       document.title = title || "";
     }
   }, [data, isEdit]);
 
-  if (isEdit) {
+
+const UpdateData = async (data) => {
+  try {
+    const userEmail = 'tarun.syndell@gmail.com'
+    const response = await fetch('http://localhost:5001/api/v1/admin/updateCard/'+userEmail, {
+      method: 'POST', // Specify the request method
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: JSON.stringify({ cardData: data }), // Convert data to JSON format and include in the request body
+    });
+
+    const jsonData = await response.json();
+    console.log('responseeee', jsonData);
+
+    // Assuming `setData` is a function you've defined elsewhere
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+
+  if (isEdit && data != undefined) {
     return (
       <div>
         <Puck
           config={config}
           data={data}
           onPublish={async (data: Data) => {
-            console.log(data)
             localStorage.setItem(key, JSON.stringify(data));
+            UpdateData(data);
           }}
           plugins={[headingAnalyzer]}
           headerPath={path}
@@ -74,7 +111,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
     );
   }
 
-  if (data) {
+  if (data && resolvedData != undefined) {
     return <Render config={config} data={resolvedData} />;
   }
 
