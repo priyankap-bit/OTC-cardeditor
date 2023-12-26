@@ -89,9 +89,9 @@ export const MenuBar = ({
             onClick={() => {
               onPublish(data);
             }}
-            icon={<Globe size="14px" />}
+            // icon={<Globe size="14px" />}
           >
-            Publish
+            Publish changes
           </Button>
         </div>
       </div>

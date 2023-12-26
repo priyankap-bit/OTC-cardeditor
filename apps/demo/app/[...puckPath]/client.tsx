@@ -14,26 +14,40 @@ const isBrowser = typeof window !== "undefined";
 export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   // unique b64 key that updates each time we add / remove components
   const componentKey = Buffer.from(
-    `${Object.keys(config.components).join("-")}-${JSON.stringify(initialData)}`
+    `${Object.keys(config.components).join("-")}`
   ).toString("base64");
 
   const key = `puck-demo:${componentKey}:${path}`;
 
-  const [data] = useState<Data>(() => {
+  const [data, setData] = useState<Data | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://backend.1tapconnect.com/api/v1/admin/mockdata'
+        );
+        const jsonData = await response.json();
+        console.log("responseeee",jsonData);
+        
+        setData(jsonData[path] || undefined);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
     if (isBrowser) {
       const dataStr = localStorage.getItem(key);
 
       if (dataStr) {
-        return JSON.parse(dataStr);
+        setData(JSON.parse(dataStr));
+      } else {
+        fetchData();
       }
-
-      return initialData[path] || undefined;
     }
-  });
+  }, [key, path, isBrowser]);
 
-  // Normally this would happen on the server, but we can't
-  // do that because we're using local storage as a database
-  const [resolvedData, setResolvedData] = useState(data);
+  const [resolvedData, setResolvedData] = useState<Data | undefined>(data);
 
   useEffect(() => {
     if (data && !isEdit) {
@@ -43,19 +57,20 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
 
   useEffect(() => {
     if (!isEdit) {
-      const title = data?.root.props?.title || data.root.title;
+      const title = data?.root.props?.title || data?.root.title;
       document.title = title || "";
     }
   }, [data, isEdit]);
 
-  if (isEdit) {
+  if (isEdit && data != undefined) {
+    console.log("data",data);
+    
     return (
       <div>
         <Puck
           config={config}
           data={data}
           onPublish={async (data: Data) => {
-            console.log(data)
             localStorage.setItem(key, JSON.stringify(data));
           }}
           plugins={[headingAnalyzer]}
