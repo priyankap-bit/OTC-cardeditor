@@ -9,6 +9,7 @@ import { Logos, LogosProps } from "./blocks/Logos";
 import { Stats, StatsProps } from "./blocks/Stats";
 import { Text, TextProps } from "./blocks/Text";
 import { VerticalSpace, VerticalSpaceProps } from "./blocks/VerticalSpace";
+import { Testimonial, TestimonialProps} from "./blocks/Testimonial"
 
 import Root, { RootProps } from "./root";
 
@@ -23,6 +24,7 @@ type Props = {
   Stats: StatsProps;
   Text: TextProps;
   VerticalSpace: VerticalSpaceProps;
+  Testimonial: TestimonialProps;
 };
 
 // We avoid the name config as next gets confused
@@ -36,9 +38,11 @@ export const conf: Config<
   },
   categories: {
     layout: {
+      title: "Layout",
       components: ["Columns", "Flex", "VerticalSpace"],
     },
     typography: {
+      title: "Typography",
       components: ["Heading", "Text"],
     },
     interactive: {
@@ -57,6 +61,7 @@ export const conf: Config<
     Stats,
     Text,
     VerticalSpace,
+    Testimonial
   },
 };
 

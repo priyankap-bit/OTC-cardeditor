@@ -61,6 +61,37 @@
   opacity: 0.7;
 }
 
+.Button--success{
+  background: #48AF25;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  padding: 12px 20px;
+}
+
+.Button--success:hover {
+  opacity: 0.7;
+  transition: opacity 50ms ease-in;
+}
+
+.Button--info{
+  background: #E65925;
+  padding: 12px 20px;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+}
+
+.Button--info:hover{
+  opacity: 0.7;
+  transition: opacity 50ms ease-in
+}
+
+.Button--warning{
+  background: #F2F2F2;
+  padding: 12px 20px;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  color: #333333;
+}
 .Button--flush {
   border-radius: 0;
 }

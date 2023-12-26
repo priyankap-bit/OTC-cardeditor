@@ -71,7 +71,7 @@ export const MenuBar = ({
             </svg>
             <span>Undo</span>
           </IconButton>
-          <span style={{display:"flex", alignItems:"center"}}>|</span>
+          <span style={{display:"flex", alignItems:"center"}}>/</span>
           <IconButton title="redo" disabled={!canForward} onClick={forward}>
             <span>Redo</span>
             {/* <ChevronRight
@@ -99,9 +99,10 @@ export const MenuBar = ({
             onClick={() => {
               onPublish(data);
             }}
-            icon={<Globe size="14px" />}
+            variant='success'
+            // icon={<Globe size="14px" />}
           >
-            Publish
+            Publish changes
           </Button>
         </div>
       </div>

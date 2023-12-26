@@ -43,12 +43,17 @@ export const Draggable = ({
             {...provided.dragHandleProps}
             style={{
               ...provided.draggableProps.style,
+              background: "#F2F2F2",
+              padding: "8px 10px 8px 10px",
+              border:"none",
+              borderRadius: "4px",
               transform:
                 snapshot.isDragging || !disableAnimations
                   ? provided.draggableProps.style?.transform
                   : "translate(0px, 0px)",
             }}
           >
+           
             {children(provided, snapshot)}
           </div>
           {/* See https://github.com/atlassian/react-beautiful-dnd/issues/216#issuecomment-906890987 */}
