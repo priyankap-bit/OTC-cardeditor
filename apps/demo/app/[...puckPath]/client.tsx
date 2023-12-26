@@ -24,8 +24,9 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const userEmail = 'tarun.syndell@gmail.com'
         const response = await fetch(
-          'https://backend.1tapconnect.com/api/v1/admin/mockdata'
+          'http://localhost:5001/api/v1/admin/mockdata/'+userEmail
         );
         const jsonData = await response.json();
         console.log("responseeee",jsonData);
@@ -62,9 +63,29 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
     }
   }, [data, isEdit]);
 
+
+const UpdateData = async (data) => {
+  try {
+    const userEmail = 'tarun.syndell@gmail.com'
+    const response = await fetch('http://localhost:5001/api/v1/admin/updateCard/'+userEmail, {
+      method: 'POST', // Specify the request method
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: JSON.stringify({ cardData: data }), // Convert data to JSON format and include in the request body
+    });
+
+    const jsonData = await response.json();
+    console.log('responseeee', jsonData);
+
+    // Assuming `setData` is a function you've defined elsewhere
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+
   if (isEdit && data != undefined) {
-    console.log("data",data);
-    
     return (
       <div>
         <Puck
@@ -72,6 +93,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
           data={data}
           onPublish={async (data: Data) => {
             localStorage.setItem(key, JSON.stringify(data));
+            UpdateData(data);
           }}
           plugins={[headingAnalyzer]}
           headerPath={path}
@@ -89,7 +111,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
     );
   }
 
-  if (data) {
+  if (data && resolvedData != undefined) {
     return <Render config={config} data={resolvedData} />;
   }
 
