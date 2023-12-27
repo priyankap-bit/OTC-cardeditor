@@ -76,7 +76,6 @@ export const conf: Config<
 
 
 export const initialData: Record<string, Data> = {
-
   
 };
 
