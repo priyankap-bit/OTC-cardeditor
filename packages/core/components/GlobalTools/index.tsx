@@ -31,7 +31,7 @@ export const GlobalTools = () => {
   };
 
   // ... rest of your component
-  const fontFamilies = ['red', 'green', 'Times New Roman', 'Courier New', 'Verdana'];
+  const fontFamilies = ['Times New Roman', 'Courier New', 'Verdana'];
 
   const handleFontFamilyChange = (event)=>{
     const newFamily = event.target.value
