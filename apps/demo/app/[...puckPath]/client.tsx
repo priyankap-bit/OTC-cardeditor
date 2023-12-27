@@ -27,7 +27,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
       try {
         const userEmail = 'dabone8248@ubinert.com'
         const response = await fetch(
-          'http://localhost:5001/api/v1/admin/mockdata/'+userEmail
+          'http://backend.1tapconnect.com/api/v1/admin/mockdata/'+userEmail
         );
         const jsonData = await response.json();
         console.log("responseeee",jsonData);
@@ -68,7 +68,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
 const UpdateData = async (data) => {
   try {
     const userEmail = 'dabone8248@ubinert.com'
-    const response = await fetch('http://localhost:5001/api/v1/admin/updateCard/'+userEmail, {
+    const response = await fetch('http://backend.1tapconnect.com/api/v1/admin/updateCard/'+userEmail, {
       method: 'POST', // Specify the request method
       headers: {
         'Content-Type': 'application/json', // Set the content type to JSON

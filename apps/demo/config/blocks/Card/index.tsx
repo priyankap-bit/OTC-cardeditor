@@ -76,7 +76,8 @@ export const Card: ComponentConfig<CardProps> = {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/pevag21311@usoplay.com");
+          const email = "dabone8248@ubinert.com";
+          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/"+email);
           const data = await response.json();
           setUserData(data);
         } catch (error) {
