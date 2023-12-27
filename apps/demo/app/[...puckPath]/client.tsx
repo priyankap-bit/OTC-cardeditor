@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/core/components/Button";
 import headingAnalyzer from "@/plugin-heading-analyzer/src/HeadingAnalyzer";
 import config, { initialData } from "../../config";
+import './client.css'
 
 const isBrowser = typeof window !== "undefined";
 
@@ -24,7 +25,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userEmail = 'tarun.syndell@gmail.com'
+        const userEmail = 'dabone8248@ubinert.com'
         const response = await fetch(
           'http://localhost:5001/api/v1/admin/mockdata/'+userEmail
         );
@@ -66,7 +67,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
 
 const UpdateData = async (data) => {
   try {
-    const userEmail = 'tarun.syndell@gmail.com'
+    const userEmail = 'dabone8248@ubinert.com'
     const response = await fetch('http://localhost:5001/api/v1/admin/updateCard/'+userEmail, {
       method: 'POST', // Specify the request method
       headers: {
@@ -126,11 +127,11 @@ const UpdateData = async (data) => {
       }}
     >
       <div>
-        <h1>404</h1>
-        <p>Page does not exist in session storage</p>
+        <div className="spinner"></div>
       </div>
     </div>
   );
+  
 }
 
 export default Client;

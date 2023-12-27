@@ -31,7 +31,7 @@ type Props = {
   VerticalSpace: VerticalSpaceProps;
   SingleVideo:SingleVideoProps;
   VideoGallery:VideoGalleryProps;
-  // Testimonial: TestimonialProps;
+  Testimonial: TestimonialProps;
 };
 
 // We avoid the name config as next gets confused
@@ -66,8 +66,8 @@ export const conf: Config<
     Image,
     VerticalSpace,
     SingleVideo,
-    VideoGallery
-    // Testimonial,
+    VideoGallery,
+    Testimonial,
   },
 };
 

@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { getClassNameFactory } from "@/core/lib";
 import { Section } from "../../components/Section";
 import { Carousel } from "react-bootstrap";
-//import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Testimonial", styles);
 
