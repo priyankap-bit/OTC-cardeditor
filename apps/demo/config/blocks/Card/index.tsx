@@ -76,8 +76,8 @@ export const Card: ComponentConfig<CardProps> = {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const email = "dabone8248@ubinert.com";
-          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/"+email);
+          const userEmail = "dabone8248@ubinert.com";
+          const response = await fetch("http://localhost:5001/api/v1/admin/getaUser/"+userEmail);
           const data = await response.json();
           setUserData(data);
         } catch (error) {
@@ -122,7 +122,7 @@ export const Card: ComponentConfig<CardProps> = {
               </div>
                 <div className={getClassName("onetap_conn_user_image_container")}>
                     <img
-                      src={userData && userData.avatar ? `https://backend.1tapconnect.com/api/v1/profile/img/`+userData.avatar : 'http://proseps.campusfc.unibo.it/wp-content/uploads/2017/01/profil-pic_dummy-300x300.png'}
+                      src={userData && userData.avatar ? `https://localhost:5001/api/v1/profile/img/`+userData.avatar : 'http://proseps.campusfc.unibo.it/wp-content/uploads/2017/01/profil-pic_dummy-300x300.png'}
                       alt="user_photo"
                       className={getClassName("onetap_conn_user_image")}
                     />
