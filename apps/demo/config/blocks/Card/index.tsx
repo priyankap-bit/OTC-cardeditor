@@ -7,7 +7,7 @@ import * as reactFeather from "react-feather";
 import { useSelector } from "react-redux";
 import useGlobalFontSize from "./useGlobalFontSize";
 import { Carousel } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 const getClassName = getClassNameFactory("Card", styles);
 type RootState = {
@@ -76,7 +76,7 @@ export const Card: ComponentConfig<CardProps> = {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/tarun.syndell@gmail.com");
+          const response = await fetch("https://backend.1tapconnect.com/api/v1/admin/getaUser/pevag21311@usoplay.com");
           const data = await response.json();
           setUserData(data);
         } catch (error) {
@@ -139,12 +139,15 @@ export const Card: ComponentConfig<CardProps> = {
               </div>
               <div style={{ fontSize: `${sizevalue.fontSize}px`, color: sizevalue.fontColor, fontFamily: sizevalue.fontfamily }} className={getClassName("onetap_conn_personal_card_2")}>
               {/* {Designation} */}
-                {Designations.map((item, i) => (
-                  <span key={i} className={getClassName("item")}>
-                    {item.alt}
-                    {i < Designations.length - 1 && " | "}
-                  </span>
-                ))}
+
+              {Designations && Designations.map((item, i) => (
+                    <span key={i} className={getClassName("item")}>
+                      {item.alt}
+                      {i < Designations.length - 1 && " | "}
+                    </span>
+                  ))}
+
+
               </div>
             </div>
 
