@@ -76,8 +76,8 @@ export const Card: ComponentConfig<CardProps> = {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const email = "dabone8248@ubinert.com";
-          const response = await fetch("https://localhost:5001/api/v1/admin/getaUser/"+email);
+          const userEmail = "dabone8248@ubinert.com";
+          const response = await fetch("http://localhost:5001/api/v1/admin/getaUser/"+userEmail);
           const data = await response.json();
           setUserData(data);
         } catch (error) {

@@ -21,7 +21,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   const key = `puck-demo:${componentKey}:${path}`;
 
   const [data, setData] = useState<Data | undefined>(undefined);
-
+const [role, setRole] = useState ('');
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,22 +32,33 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
         const jsonData = await response.json();
         console.log("responseeee",jsonData);
         
-        setData(jsonData[path] || undefined);
+        if(jsonData.role == 'superadmin'){
+          setRole(jsonData.role)
+          const modifiedData = {
+            "content": [  
+          ],
+            "root": {
+            },
+            "zones": {}
+          }
+          
+          setData(modifiedData);
+        }else{
+          setData(jsonData.modifiedData[path] || undefined);
+        }
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     if (isBrowser) {
-      const dataStr = localStorage.getItem(key);
-
-      if (dataStr) {
-        setData(JSON.parse(dataStr));
-      } else {
         fetchData();
-      }
     }
   }, [key, path, isBrowser]);
+
+
+  
 
   const [resolvedData, setResolvedData] = useState<Data | undefined>(data);
 
@@ -68,7 +79,13 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
 const UpdateData = async (data) => {
   try {
     const userEmail = 'dabone8248@ubinert.com'
-    const response = await fetch('http://localhost:5001/api/v1/admin/updateCard/'+userEmail, {
+    
+      let userApi = 'http://localhost:5001/api/v1/admin/updateCard/'
+    if(role == 'superadmin'){
+       userApi = 'http://localhost:5001/api/v1/admin/addCompanyCard/' 
+    }
+
+    const response = await fetch(userApi+userEmail, {
       method: 'POST', // Specify the request method
       headers: {
         'Content-Type': 'application/json', // Set the content type to JSON
@@ -93,7 +110,6 @@ const UpdateData = async (data) => {
           config={config}
           data={data}
           onPublish={async (data: Data) => {
-            localStorage.setItem(key, JSON.stringify(data));
             UpdateData(data);
           }}
           plugins={[headingAnalyzer]}
@@ -101,6 +117,7 @@ const UpdateData = async (data) => {
           renderHeaderActions={() => (
             <>
               <div>
+            
                 <Button href={path} newTab variant="secondary">
                   View page
                 </Button>
