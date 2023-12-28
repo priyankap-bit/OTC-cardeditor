@@ -14,10 +14,12 @@ const ComponentListItem = ({
   component,
   index,
   id,
+  extraField,
 }: {
   component: string;
   index: number;
   id: string;
+  extraField?: boolean | undefined;
 }) => {
   return (
     <div className={getClassNameItem()}>
@@ -27,7 +29,8 @@ const ComponentListItem = ({
         index={index}
         showShadow
         disableAnimations
-        className={() => getClassNameItem("draggable")}
+        isDragDisabled={extraField}
+        className={() => getClassNameItem(extraField ? "disable" : "draggable")}
       >
         {() => (
           <>

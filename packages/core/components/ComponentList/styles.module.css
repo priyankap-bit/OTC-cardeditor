@@ -66,6 +66,19 @@
   margin-bottom: 12px;
 }
 
+.ComponentListItem-disable {
+  background: #e3e3e3;
+  padding: 12px;
+  display: flex;
+  border: 1px var(--puck-color-grey-8) solid;
+  border-radius: 4px;
+  font-size: var(--puck-font-size-xxs);
+  justify-content: space-between;
+  align-items: center;
+  cursor: not-allowed;
+  margin-bottom: 12px;
+}
+
 .ComponentListItem-name {
   overflow-x: hidden;
   text-overflow: ellipsis;
