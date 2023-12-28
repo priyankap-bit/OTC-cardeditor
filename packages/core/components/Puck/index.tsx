@@ -559,7 +559,7 @@ export function Puck({
                             </Button>
                             <Button
                               icon={<Settings size="14px" />}
-                              variant="secondary"
+                              variant="warning"
                             >
                               Global Settings
                             </Button>
