@@ -118,7 +118,7 @@ const UpdateData = async (data) => {
             <>
               <div>
             
-                <Button href={path} newTab variant="secondary">
+                <Button href={path} newTab variant="info">
                   View page
                 </Button>
               </div>
