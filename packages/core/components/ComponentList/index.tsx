@@ -56,7 +56,12 @@ const ComponentList = ({
   const { expanded = true } = state.ui.componentList[id] || {};
 
   return (
-    <div className={getClassName({ isExpanded: expanded })}>
+    <div
+      className={getClassName({ isExpanded: expanded })}
+      style={{
+        marginBottom: "10px",
+      }}
+    >
       {title && (
         <div
           className={getClassName("title")}
