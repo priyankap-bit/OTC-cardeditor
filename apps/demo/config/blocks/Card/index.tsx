@@ -24,9 +24,6 @@ const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: stri
   return { fontSize, fontColor, bgColor, fontfamily };
 };
 
-
-
-
 export type CardProps = {
   Name: string;
   Company: string;
@@ -35,8 +32,6 @@ export type CardProps = {
   }[];
 
 };
-
-
 
 export const Card: ComponentConfig<CardProps> = {
 
@@ -55,9 +50,6 @@ export const Card: ComponentConfig<CardProps> = {
         alt: { type: "text" },
       },
     },
-
-
-    
   },
   defaultProps: {
     Name:"Name",

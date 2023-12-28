@@ -45,11 +45,12 @@ export const conf: Config<
   },
   categories: {
     free: {
+      visible: false,
       components: ["Columns", "VerticalSpace", "Heading", "Text"],
     },
    
     premium: {
-      components: ["Card", "ButtonGroup", "Hero", "Flex", "Logos", "Stats", "VideoGallery", "SingleVideo", "VerticalSpace", "Image", "ImageGallery"],
+      components: ["Card", "ButtonGroup", "Hero", "Flex", "Logos", "Stats", "VideoGallery", "SingleVideo", "VerticalSpace", "Image", "ImageGallery", "Testimonial"],
     },
   },
   components: {

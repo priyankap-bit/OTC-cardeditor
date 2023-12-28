@@ -25,7 +25,7 @@ const [role, setRole] = useState ('');
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userEmail = 'dabone8248@ubinert.com'
+        const userEmail = 'yashvyas.syndell@gmail.com'
         const response = await fetch(
           'http://localhost:5001/api/v1/admin/mockdata/'+userEmail
         );
@@ -43,6 +43,7 @@ const [role, setRole] = useState ('');
           }
           
           setData(modifiedData);
+          
         }else{
           setData(jsonData.modifiedData[path] || undefined);
         }
@@ -117,7 +118,6 @@ const UpdateData = async (data) => {
           renderHeaderActions={() => (
             <>
               <div>
-            
                 <Button href={path} newTab variant="secondary">
                   View page
                 </Button>
@@ -130,6 +130,7 @@ const UpdateData = async (data) => {
   }
 
   if (data && resolvedData != undefined) {
+    console.log('ddd', resolvedData)
     return <Render config={config} data={resolvedData} />;
   }
 
