@@ -49,7 +49,7 @@ export const conf: Config<
     },
    
     premium: {
-      components: ["Card", "ButtonGroup", "Hero", "Flex", "Logos", "Stats", "VideoGallery", "SingleVideo", "VerticalSpace", "Image", "ImageGallery"],
+      components: ["Card", "ButtonGroup", "Hero", "Flex", "Logos", "Stats", "VideoGallery", "SingleVideo", "VerticalSpace", "Image", "ImageGallery", "Testimonial"],
     },
   },
   components: {

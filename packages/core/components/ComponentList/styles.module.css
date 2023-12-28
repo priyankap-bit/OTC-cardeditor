@@ -32,17 +32,16 @@
 }
 
 .ComponentList--isExpanded .ComponentList-title {
-  margin-bottom: 4px;
+  /* margin-bottom: 4px; */
 }
 
 .ComponentList-title:hover {
   /* background-color: var(--puck-color-azure-9); */
   /* color: var(--puck-color-azure-4); */
-  background-color: #8A8A8A;
+  /* background-color: #8A8A8A; */
   /* color: #000; */
-  color: #ffff;
+  opacity: 0.9;
   cursor: pointer;
-  fill : #333333 !important;
 }
 
 .ComponentList-titleIcon {
@@ -89,4 +88,22 @@
   .ComponentListItem-draggable:hover {
   background-color: var(--puck-color-azure-9);
   color: var(--puck-color-azure-4);
+}
+
+
+/* demo styling */
+
+.ComponentListItem-itemContent{
+  width: 120px;
+}
+
+.ComponentListItem-icon{
+  text-align: center;
+}
+
+.ComponentListItem-name{
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #545454;
 }
