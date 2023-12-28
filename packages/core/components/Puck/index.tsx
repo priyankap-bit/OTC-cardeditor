@@ -601,7 +601,7 @@ export function Puck({
                             <ComponentList id="all" />
                           )}
                         </ComponentListWrapper>
-                      </SidebarSection>
+                      </SidebarSection> 
                       <SidebarSection title="Outline">
                         {ctx?.activeZones &&
                           ctx?.activeZones[rootDroppableId] && (

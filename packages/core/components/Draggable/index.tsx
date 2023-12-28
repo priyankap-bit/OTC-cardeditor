@@ -50,10 +50,12 @@ export const Draggable = ({
             // }}
             style={{
               ...provided.draggableProps.style,
-              background: "#F2F2F2",
+              // background: "#F2F2F2",
               padding: "8px 10px 8px 10px",
               border:"none",
               borderRadius: "4px",
+              // height : "100px",
+              justifyContent: "center",
               transform:
                 snapshot.isDragging || !disableAnimations
                   ? provided.draggableProps.style?.transform
