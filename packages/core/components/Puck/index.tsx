@@ -91,6 +91,7 @@ export function Puck({
   config,
   data: initialData = { content: [], root: { props: { title: "" } } },
   onChange,
+  onSave,
   onPublish,
   plugins = [],
   renderComponentList,
@@ -102,6 +103,7 @@ export function Puck({
   config: Config<any, any, any>;
   data: Data;
   onChange?: (data: Data) => void;
+  onSave: (data: Data) => void;
   onPublish: (data: Data) => void;
   plugins?: Plugin[];
   renderComponentList?: (props: {
@@ -423,7 +425,15 @@ export function Puck({
                     <header className={getClassName("header")}>
                       {renderHeader ? (
                         renderHeader({
-                          children: (
+                          children: (<>
+                           <Button
+                              onClick={() => {
+                                onSave(data);
+                              }}
+                              icon={<Globe size="14px" />}
+                            >
+                              Save
+                            </Button>
                             <Button
                               onClick={() => {
                                 onPublish(data);
@@ -432,7 +442,7 @@ export function Puck({
                             >
                               Publish
                             </Button>
-                          ),
+                            </>   ),
                           dispatch,
                           state: appState,
                         })
@@ -583,6 +593,7 @@ export function Puck({
                               appState={appState}
                               data={data}
                               dispatch={dispatch}
+                              onSave={onSave}
                               onPublish={onPublish}
                               menuOpen={menuOpen}
                               renderHeaderActions={renderHeaderActions}

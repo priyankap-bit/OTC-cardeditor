@@ -17,6 +17,7 @@ export const MenuBar = ({
   data = { content: [], root: { props: { title: "" } } },
   dispatch,
   menuOpen = false,
+  onSave,
   onPublish,
   renderHeaderActions,
   setMenuOpen,
@@ -24,6 +25,7 @@ export const MenuBar = ({
   appState: AppState;
   data: Data;
   dispatch: (action: PuckAction) => void;
+  onSave: (data: Data) => void;
   onPublish: (data: Data) => void;
   menuOpen: boolean;
   renderHeaderActions?: (props: {
@@ -93,6 +95,17 @@ export const MenuBar = ({
               dispatch,
             })}
         </>
+        <div>
+          <Button
+            onClick={() => {
+              onSave(data);
+            }}
+            variant="info"
+            // icon={<Globe size="14px" />}
+          >
+            Save
+          </Button>
+        </div>
         <div>
           <Button
             onClick={() => {
