@@ -118,7 +118,8 @@ const UpdateData = async (data) => {
           renderHeaderActions={() => (
             <>
               <div>
-                <Button href={path} newTab variant="secondary">
+            
+                <Button href={path} newTab variant="info">
                   View page
                 </Button>
               </div>

@@ -41,8 +41,21 @@ export const Draggable = ({
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            // style={{
+            //   ...provided.draggableProps.style,
+            //   transform:
+            //     snapshot.isDragging || !disableAnimations
+            //       ? provided.draggableProps.style?.transform
+            //       : "translate(0px, 0px)",
+            // }}
             style={{
               ...provided.draggableProps.style,
+              // background: "#F2F2F2",
+              padding: "8px 10px 8px 10px",
+              border:"none",
+              borderRadius: "4px",
+              // height : "100px",
+              justifyContent: "center",
               transform:
                 snapshot.isDragging || !disableAnimations
                   ? provided.draggableProps.style?.transform
