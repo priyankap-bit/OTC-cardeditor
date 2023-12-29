@@ -9,6 +9,7 @@ import useGlobalFontSize from "./useGlobalFontSize";
 import { Carousel } from "react-bootstrap";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
+const EMAIL_ID = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 const getClassName = getClassNameFactory("Card", styles);
 type RootState = {
   app: {
@@ -76,7 +77,7 @@ export const Card: ComponentConfig<CardProps> = {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const userEmail = "dabone8248@ubinert.com";
+          const userEmail = EMAIL_ID;
           const response = await fetch("http://localhost:5001/api/v1/admin/getaUser/"+userEmail);
           const data = await response.json();
           setUserData(data);

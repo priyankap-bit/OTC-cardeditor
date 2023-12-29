@@ -2,19 +2,23 @@ import { ReactNode, useEffect, useState } from "react";
 import { Config, UiState } from "../types/Config";
 import { ComponentList } from "../components/ComponentList";
 
+const EMAIL_ID = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 export const useComponentList = (config: Config, ui: UiState) => {
   const [componentList, setComponentList] = useState<ReactNode[]>();
-  const [planName, setPlanName] = useState("test");
+  const [planName, setPlanName] = useState("");
 
   useEffect(() => {
-    console.log("first effect")
     const fetchData = async () => {
       try {
-        const userEmail = 'dabone8248@ubinert.com';
+        const userEmail = EMAIL_ID;
         const response = await fetch(
           'http://localhost:5001/api/v1/admin/fetchPlan/' + userEmail
         );
         const jsonData = await response.json();
+        if(jsonData.role === "teammember"){
+          setPlanName("Team");
+          return;
+        }
         setPlanName(jsonData.planName);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -25,7 +29,6 @@ export const useComponentList = (config: Config, ui: UiState) => {
   }, []);
 
   useEffect(() => {
-    console.log("second effect", planName)
     if (Object.keys(ui.componentList).length > 0) {
       const matchedComponents: string[] = [];
 

@@ -10,6 +10,7 @@ import headingAnalyzer from "@/plugin-heading-analyzer/src/HeadingAnalyzer";
 import config, { initialData } from "../../config";
 import './client.css'
 
+const EMAIL_ID = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 const isBrowser = typeof window !== "undefined";
 
 export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
@@ -25,7 +26,7 @@ const [role, setRole] = useState ('');
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userEmail = 'dabone8248@ubinert.com'
+        const userEmail = EMAIL_ID
         const response = await fetch(
           'http://localhost:5001/api/v1/admin/mockdata/'+userEmail
         );
@@ -57,9 +58,6 @@ const [role, setRole] = useState ('');
     }
   }, [key, path, isBrowser]);
 
-
-  
-
   const [resolvedData, setResolvedData] = useState<Data | undefined>(data);
 
   useEffect(() => {
@@ -76,11 +74,36 @@ const [role, setRole] = useState ('');
   }, [data, isEdit]);
 
 
-const UpdateData = async (data) => {
+const UpdateData = async (data: Data) => {
   try {
-    const userEmail = 'dabone8248@ubinert.com'
+    const userEmail = EMAIL_ID
     
-      let userApi = 'http://localhost:5001/api/v1/admin/updateCard/'
+    let userApi = 'http://localhost:5001/api/v1/admin/publishUpdateCard/'
+    if(role == 'superadmin'){
+      userApi = 'http://localhost:5001/api/v1/admin/publishAddCompanyCard/' 
+    }
+    const response = await fetch(userApi+userEmail, {
+      method: 'POST', // Specify the request method
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+      body: JSON.stringify({ cardData: data }), // Convert data to JSON format and include in the request body
+    });
+
+    const jsonData = await response.json();
+    console.log('responseeee', jsonData);
+
+    // Assuming `setData` is a function you've defined elsewhere
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+const handleSaveButton = async (data: Data) => {
+  try {
+    const userEmail = EMAIL_ID
+    
+    let userApi = 'http://localhost:5001/api/v1/admin/updateCard/'
     if(role == 'superadmin'){
        userApi = 'http://localhost:5001/api/v1/admin/addCompanyCard/' 
     }
@@ -109,6 +132,9 @@ const UpdateData = async (data) => {
         <Puck
           config={config}
           data={data}
+          onSave={async (data: Data) => {
+            handleSaveButton(data);
+          }}
           onPublish={async (data: Data) => {
             UpdateData(data);
           }}
@@ -117,8 +143,7 @@ const UpdateData = async (data) => {
           renderHeaderActions={() => (
             <>
               <div>
-            
-                <Button href={path} newTab variant="info">
+                <Button href={path} newTab variant="warning">
                   View page
                 </Button>
               </div>
