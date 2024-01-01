@@ -64,13 +64,13 @@ export const Image: ComponentConfig<ImageProps> = {
 
     return (
       <Section>
-        <span>
+         <div>
           {image ? (
-            <img src={imageUrl} alt="Preview" />
+            <img src={imageUrl} alt="Preview" style={{ width: '100%', WebkitWidth: '-webkit-fill-available' }}  />
           ) : (
-            <img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" alt="Default Preview" />
+            <img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" alt="Default Preview" style={{ width: '100%', WebkitWidth: '-webkit-fill-available' }}  />
           )}
-        </span>
+        </div>
       </Section>
     );
   },
