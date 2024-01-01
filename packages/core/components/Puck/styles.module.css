@@ -222,3 +222,10 @@
 .Puck-rightSideBar::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
+.Puck-leftSideBarButton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}

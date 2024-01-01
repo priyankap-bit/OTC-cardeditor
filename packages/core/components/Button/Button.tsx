@@ -22,7 +22,7 @@ export const Button = ({
   children: ReactNode;
   href?: string;
   onClick?: (e: any) => void | Promise<void>;
-  variant?: "primary" | "secondary" | "success" | "info" | "warning";
+  variant?: "primary" | "secondary" | "success" | "info" | "warning" | "gray";
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   tabIndex?: number;
@@ -46,6 +46,7 @@ export const Button = ({
         success: variant === "success",
         info: variant === "info",
         warning: variant === "warning",
+        gray: variant === "gray",
         disabled,
         fullWidth,
         [size]: true,

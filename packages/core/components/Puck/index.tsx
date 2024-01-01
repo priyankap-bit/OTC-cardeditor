@@ -48,6 +48,7 @@ import { useResolvedData } from "../../lib/use-resolved-data";
 import { MenuBar } from "../MenuBar";
 import styles from "./styles.module.css";
 import React from "react";
+import { Render } from "../Render";
 
 const getClassName = getClassNameFactory("Puck", styles);
 
@@ -604,6 +605,10 @@ export function Puck({
                       )}
                     </header>
                     <div className={getClassName("leftSideBar")}>
+                      <div className={getClassName("leftSideBarButton")}>
+                        <Button variant="info">Add Section</Button>
+                        <Button variant="gray">Add Block</Button>
+                      </div>
                       <SidebarSection title="Components">
                         <ComponentListWrapper>
                           {componentList ? (
