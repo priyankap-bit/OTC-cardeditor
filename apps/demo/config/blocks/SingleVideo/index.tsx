@@ -25,7 +25,7 @@ const renderUploadedVideos = (item) => {
 };
 const selectOption = [
     { label: "YouTube", value: "YouTube" },
-    { label: "Vimo", value: "Vimo" },]
+    { label: "vimeo ", value: "vimeo " },]
 export const SingleVideo: ComponentConfig<SingleVideoProps> = {
 
     fields: {

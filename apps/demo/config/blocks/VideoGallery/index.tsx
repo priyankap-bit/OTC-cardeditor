@@ -7,7 +7,7 @@ import { Section } from "../../components/Section";
 
 const selectOption = [
     { label: "YouTube", value: "YouTube" },
-    { label: "Vimo", value: "Vimo" },]
+    { label: "vimeo", value: "vimeo" },]
 
 export type VideoGalleryProps = {
     Videos: {

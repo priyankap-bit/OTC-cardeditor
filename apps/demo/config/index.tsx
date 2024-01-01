@@ -38,17 +38,17 @@ type Props = {
 export const conf: Config<
   Props,
   RootProps,
-  "Free" | "Professional" | "Team"
+  "Basic" | "Pro" | "Team"
 > = {
   root: {
     render: Root,
   },
   categories: {
-    Free: {
+    Basic: {
       components: ["ButtonGroup", "Card", "ImageGallery", "Columns", "Hero", "Heading"],
     },
    
-    Professional: {
+    Pro: {
       components: ["Card", "Flex", "Logos",  "Text", "Image", "VerticalSpace", "SingleVideo", "VideoGallery", "Testimonial"],
     },
     
