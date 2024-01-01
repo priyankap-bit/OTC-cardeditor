@@ -22,68 +22,68 @@ const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: stri
   return { fontSize, fontColor, bgColor ,fontfamily};
 };
 export type LogosProps = {
-  logos: {
-    alt: string;
-    imageUrl: string;
+  Logos: {
+    Alt: string;
+    ImageUrl: string;
   }[];
 };
 
 export const Logos: ComponentConfig<LogosProps> = {
   fields: {
-    logos: {
+    Logos: {
       type: "array",
-      getItemSummary: (item, i) => item.alt || `Feature #${i}`,
+      getItemSummary: (item, i) => item.Alt || `Feature #${i}`,
       defaultItemProps: {
-        alt: "",
-        imageUrl: "",
+        Alt: "",
+        ImageUrl: "",
       },
       arrayFields: {
-        alt: { type: "text" },
-        imageUrl: { type: "text" },
+        Alt: { type: "text" },
+        ImageUrl: { type: "text" },
       },
     },
   },
   defaultProps: {
-    logos: [
+    Logos: [
       {
-        alt: "google",
-        imageUrl:
+        Alt: "Google",
+        ImageUrl:
           "https://logolook.net/wp-content/uploads/2021/06/Google-Logo.png",
       },
       {
-        alt: "google",
-        imageUrl:
+        Alt: "Google",
+        ImageUrl:
           "https://logolook.net/wp-content/uploads/2021/06/Google-Logo.png",
       },
       {
-        alt: "google",
-        imageUrl:
+        Alt: "Google",
+        ImageUrl:
           "https://logolook.net/wp-content/uploads/2021/06/Google-Logo.png",
       },
       {
-        alt: "google",
-        imageUrl:
+        Alt: "Google",
+        ImageUrl:
           "https://logolook.net/wp-content/uploads/2021/06/Google-Logo.png",
       },
       {
-        alt: "google",
-        imageUrl:
+        Alt: "Google",
+        ImageUrl:
           "https://logolook.net/wp-content/uploads/2021/06/Google-Logo.png",
       },
     ],
   },
-  render: ({ logos }) => {
+  render: ({ Logos }) => {
     const globalvalue = Gloabalfontsize();
 
     return (
       <Section style={{backgroundColor:globalvalue.bgColor}} className={getClassName()}>
         <div className={getClassName("items")}>
-          {logos.map((item, i) => (
+          {Logos.map((item, i) => (
             <div key={i} className={getClassName("item")}>
               <img
                 className={getClassName("image")}
-                alt={item.alt}
-                src={item.imageUrl}
+                alt={item.Alt}
+                src={item.ImageUrl}
                 height={64}
               ></img>
             </div>

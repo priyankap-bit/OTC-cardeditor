@@ -8,7 +8,7 @@ import { Section } from "../../components/Section";
 
 export type SingleVideoProps = {
     LinkType: string;
-    upload: string;
+    Upload: string;
 };
 
 
@@ -24,28 +24,28 @@ const renderUploadedVideos = (item) => {
 
 };
 const selectOption = [
-    { label: "YouTub", value: "YouTub" },
+    { label: "YouTube", value: "YouTube" },
     { label: "Vimo", value: "Vimo" },]
 export const SingleVideo: ComponentConfig<SingleVideoProps> = {
 
     fields: {
         LinkType: { type: "select", options: selectOption },
-        upload: { type: "text" },
+        Upload: { type: "text" },
     },
 
-    render: ({ LinkType, upload }) => {
+    render: ({ LinkType, Upload }) => {
 
         return (
             <Section style={{ margin: "10px" }}>
                 <span style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
-                    {upload == undefined ? <div style={{ height: "200px" }}>
+                    {Upload == undefined ? <div style={{ height: "200px" }}>
                         <span style={{ fontSize: "20px", fontWeight: "700" }}>SINGLE VIDEO</span>
                     </div> :
 
-                        upload == '' ? <div style={{ height: "200px" }}>
+                        Upload == '' ? <div style={{ height: "200px" }}>
                             <span style={{ fontSize: "20px", fontWeight: "700" }}>SINGLE VIDEO</span>
                         </div> :
-                            renderUploadedVideos(upload)
+                            renderUploadedVideos(Upload)
 
                     }
                 </span>

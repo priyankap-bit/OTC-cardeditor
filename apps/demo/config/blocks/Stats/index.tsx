@@ -41,45 +41,45 @@ const iconOptions = Object.keys(reactFeather).map((iconName) => ({
 }));
 
 export type StatsProps = {
-  items: {
-    title: string;
-    description: string;
+  Items: {
+    Title: string;
+    Description: string;
   }[];
 };
 
 export const Stats: ComponentConfig<StatsProps> = {
   fields: {
-    items: {
+    Items: {
       type: "array",
-      getItemSummary: (item, i) => item.title || `Feature #${i}`,
+      getItemSummary: (item, i) => item.Title || `Feature #${i}`,
       defaultItemProps: {
-        title: "Title",
-        description: "Description",
+        Title: "Title",
+        Description: "Description",
       },
       arrayFields: {
-        title: { type: "text" },
-        description: { type: "text" },
+        Title: { type: "text" },
+        Description: { type: "text" },
       },
     },
   },
   defaultProps: {
-    items: [
+    Items: [
       {
-        title: "Feature",
-        description: "Description",
+        Title: "Feature",
+        Description: "Description",
       },
     ],
   },
-  render: ({ items }) => {
+  render: ({ Items }) => {
     const globalvalue = Gloabalfontsize();
 
     return (
       <Section style={{backgroundColor:globalvalue.bgColor}} className={getClassName()} maxWidth={"916px"}>
         <div  className={getClassName("items")}>
-          {items.map((item, i) => (
+          {Items.map((item, i) => (
             <div key={i} className={getClassName("item")}>
-              <div style={{fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("label")}>{item.title}</div>
-              <div style={{fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("value")}>{item.description}</div>
+              <div style={{fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("label")}>{item.Title}</div>
+              <div style={{fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}} className={getClassName("value")}>{item.Description}</div>
             </div>
           ))}
         </div>

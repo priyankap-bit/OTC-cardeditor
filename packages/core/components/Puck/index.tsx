@@ -22,7 +22,14 @@ import { Plugin } from "../../types/Plugin";
 import { usePlaceholderStyle } from "../../lib/use-placeholder-style";
 
 import { SidebarSection } from "../SidebarSection";
-import { ChevronDown, ChevronUp, Globe, Sidebar, Settings, Edit } from "react-feather";
+import {
+  ChevronDown,
+  ChevronUp,
+  Globe,
+  Sidebar,
+  Settings,
+  Edit,
+} from "react-feather";
 import { Heading } from "../Heading";
 import { IconButton } from "../IconButton/IconButton";
 import { DropZone, DropZoneProvider, dropZoneContext } from "../DropZone";
@@ -426,31 +433,33 @@ export function Puck({
                     <header className={getClassName("header")}>
                       {renderHeader ? (
                         renderHeader({
-                          children: (<>
-                           <Button
-                              onClick={() => {
-                                onSave(data);
-                              }}
-                              icon={<Globe size="14px" />}
-                            >
-                              Save
-                            </Button>
-                            <Button
-                              onClick={() => {
-                                onPublish(data);
-                              }}
-                              icon={<Globe size="14px" />}
-                            >
-                              Publish
-                            </Button>
-                            </>   ),
+                          children: (
+                            <>
+                              <Button
+                                onClick={() => {
+                                  onSave(data);
+                                }}
+                                icon={<Globe size="14px" />}
+                              >
+                                Save
+                              </Button>
+                              <Button
+                                onClick={() => {
+                                  onPublish(data);
+                                }}
+                                icon={<Globe size="14px" />}
+                              >
+                                Publish
+                              </Button>
+                            </>
+                          ),
                           dispatch,
                           state: appState,
                         })
                       ) : (
                         <div className={getClassName("headerInner")}>
                           <div className={getClassName("headerToggle")}>
-                          <svg
+                            <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="157"
                               height="32"
@@ -564,14 +573,38 @@ export function Puck({
                               )}
                             </Heading> */}
                             <Button
-                              icon={<Edit size="14px" />}
+                            // icon={<Edit size="14px" />}
                             >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="21"
+                                height="20"
+                                viewBox="0 0 21 20"
+                                fill="none"
+                              >
+                                <path
+                                  d="M17.3516 7.39922L13.1016 3.14922L14.5266 1.72422C14.9099 1.34089 15.3809 1.14922 15.9396 1.14922C16.4982 1.14922 16.9689 1.34089 17.3516 1.72422L18.7766 3.14922C19.1599 3.53255 19.3516 4.00355 19.3516 4.56222C19.3516 5.12089 19.1599 5.59155 18.7766 5.97422L17.3516 7.39922ZM1.50156 18.9992V14.7492L6.00156 10.2492L0.726562 4.92422L5.45156 0.199219L10.7516 5.52422L11.7016 4.57422L15.9516 8.79922L15.0016 9.74922L20.2766 15.0742L15.5766 19.7742L10.2516 14.4742L5.75156 18.9992H1.50156ZM7.42656 8.82422L9.32656 6.92422L8.12656 5.72422L6.92656 6.89922L5.52656 5.49922L6.70156 4.29922L5.42656 3.04922L3.55156 4.94922L7.42656 8.82422ZM15.5516 16.9492L17.4516 15.0492L16.1766 13.7992L15.0016 14.9742L13.5766 13.5742L14.7766 12.3742L13.5516 11.1742L11.6516 13.0742L15.5516 16.9492Z"
+                                  fill="white"
+                                />
+                              </svg>
                               Global Styling
                             </Button>
                             <Button
-                              icon={<Settings size="14px" />}
+                              // icon={<Settings size="14px" />}
                               variant="warning"
                             >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                              >
+                                <path
+                                  d="M9.24922 22L8.84922 18.8C8.63255 18.7167 8.42822 18.6167 8.23622 18.5C8.04422 18.3833 7.85689 18.2583 7.67422 18.125L4.69922 19.375L1.94922 14.625L4.52422 12.675C4.50755 12.5583 4.49922 12.4457 4.49922 12.337V11.663C4.49922 11.5543 4.50755 11.4417 4.52422 11.325L1.94922 9.375L4.69922 4.625L7.67422 5.875C7.85755 5.74167 8.04922 5.61667 8.24922 5.5C8.44922 5.38333 8.64922 5.28333 8.84922 5.2L9.24922 2H14.7492L15.1492 5.2C15.3659 5.28333 15.5702 5.38333 15.7622 5.5C15.9542 5.61667 16.1416 5.74167 16.3242 5.875L19.2992 4.625L22.0492 9.375L19.4742 11.325C19.4909 11.4417 19.4992 11.5543 19.4992 11.663V12.337C19.4992 12.4457 19.4826 12.5583 19.4492 12.675L22.0242 14.625L19.2742 19.375L16.3242 18.125C16.1409 18.2583 15.9492 18.3833 15.7492 18.5C15.5492 18.6167 15.3492 18.7167 15.1492 18.8L14.7492 22H9.24922ZM12.0492 15.5C13.0159 15.5 13.8409 15.1583 14.5242 14.475C15.2076 13.7917 15.5492 12.9667 15.5492 12C15.5492 11.0333 15.2076 10.2083 14.5242 9.525C13.8409 8.84167 13.0159 8.5 12.0492 8.5C11.0659 8.5 10.2366 8.84167 9.56122 9.525C8.88589 10.2083 8.54855 11.0333 8.54922 12C8.54922 12.9667 8.88655 13.7917 9.56122 14.475C10.2359 15.1583 11.0652 15.5 12.0492 15.5Z"
+                                  fill="#333333"
+                                />
+                              </svg>
                               Global Settings
                             </Button>
                           </div>
@@ -606,8 +639,39 @@ export function Puck({
                     </header>
                     <div className={getClassName("leftSideBar")}>
                       <div className={getClassName("leftSideBarButton")}>
-                        <Button variant="info">Add Section</Button>
-                        <Button variant="gray">Add Block</Button>
+                        <Button align="center" variant="info">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="19"
+                            height="19"
+                            viewBox="0 0 19 19"
+                            fill="none"
+                          >
+                            <path
+                              d="M17.5 17.8906H17.51M1.5 17.8906H1.51M5.5 17.8906H5.51M9.5 17.8906H9.51M13.5 17.8906H13.51M17.5 1.89062H17.51M1.5 1.89062H1.51M5.5 1.89062H5.51M9.5 1.89062H9.51M13.5 1.89062V1.90063M1.5 6.89062C1.5 6.62541 1.60536 6.37105 1.79289 6.18352C1.98043 5.99598 2.23478 5.89062 2.5 5.89062H16.5C16.7652 5.89062 17.0196 5.99598 17.2071 6.18352C17.3946 6.37105 17.5 6.62541 17.5 6.89062V12.8906C17.5 13.1558 17.3946 13.4102 17.2071 13.5977C17.0196 13.7853 16.7652 13.8906 16.5 13.8906H2.5C2.23478 13.8906 1.98043 13.7853 1.79289 13.5977C1.60536 13.4102 1.5 13.1558 1.5 12.8906V6.89062Z"
+                              stroke="white"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          Add Section
+                        </Button>
+                        <Button variant="gray" align="center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="25"
+                            height="25"
+                            viewBox="0 0 25 25"
+                            fill="none"
+                          >
+                            <path
+                              d="M17.15 13.4656C17.0167 13.4656 16.8917 13.445 16.775 13.4036C16.6583 13.3623 16.55 13.2913 16.45 13.1906L12.2 8.94063C12.1 8.84063 12.0293 8.73229 11.988 8.61562C11.9467 8.49896 11.9257 8.37396 11.925 8.24062C11.925 8.10729 11.946 7.98229 11.988 7.86562C12.03 7.74896 12.1007 7.64062 12.2 7.54063L16.45 3.29063C16.55 3.19063 16.6583 3.11996 16.775 3.07862C16.8917 3.03729 17.0167 3.01629 17.15 3.01562C17.2833 3.01562 17.4083 3.03662 17.525 3.07862C17.6417 3.12062 17.75 3.19129 17.85 3.29063L22.1 7.54063C22.2 7.64062 22.271 7.74896 22.313 7.86562C22.355 7.98229 22.3757 8.10729 22.375 8.24062C22.375 8.37396 22.354 8.49896 22.312 8.61562C22.27 8.73229 22.1993 8.84063 22.1 8.94063L17.85 13.1906C17.75 13.2906 17.6417 13.3616 17.525 13.4036C17.4083 13.4456 17.2833 13.4663 17.15 13.4656ZM4.5 11.8906C4.21667 11.8906 3.97933 11.7946 3.788 11.6026C3.59667 11.4106 3.50067 11.1733 3.5 10.8906V4.89062C3.5 4.60729 3.596 4.36962 3.788 4.17762C3.98 3.98562 4.21733 3.88996 4.5 3.89062H10.5C10.7833 3.89062 11.021 3.98663 11.213 4.17863C11.405 4.37063 11.5007 4.60796 11.5 4.89062V10.8906C11.5 11.174 11.404 11.4116 11.212 11.6036C11.02 11.7956 10.7827 11.8913 10.5 11.8906H4.5ZM14.5 21.8906C14.2167 21.8906 13.9793 21.7946 13.788 21.6026C13.5967 21.4106 13.5007 21.1733 13.5 20.8906V14.8906C13.5 14.6073 13.596 14.3696 13.788 14.1776C13.98 13.9856 14.2173 13.89 14.5 13.8906H20.5C20.7833 13.8906 21.021 13.9866 21.213 14.1786C21.405 14.3706 21.5007 14.608 21.5 14.8906V20.8906C21.5 21.174 21.404 21.4116 21.212 21.6036C21.02 21.7956 20.7827 21.8913 20.5 21.8906H14.5ZM4.5 21.8906C4.21667 21.8906 3.97933 21.7946 3.788 21.6026C3.59667 21.4106 3.50067 21.1733 3.5 20.8906V14.8906C3.5 14.6073 3.596 14.3696 3.788 14.1776C3.98 13.9856 4.21733 13.89 4.5 13.8906H10.5C10.7833 13.8906 11.021 13.9866 11.213 14.1786C11.405 14.3706 11.5007 14.608 11.5 14.8906V20.8906C11.5 21.174 11.404 21.4116 11.212 21.6036C11.02 21.7956 10.7827 21.8913 10.5 21.8906H4.5Z"
+                              fill="white"
+                            />
+                          </svg>
+                          Add Block
+                        </Button>
                       </div>
                       <SidebarSection title="Components">
                         <ComponentListWrapper>
@@ -617,7 +681,7 @@ export function Puck({
                             <ComponentList id="all" />
                           )}
                         </ComponentListWrapper>
-                      </SidebarSection> 
+                      </SidebarSection>
                       <SidebarSection title="Outline">
                         {ctx?.activeZones &&
                           ctx?.activeZones[rootDroppableId] && (
@@ -651,146 +715,146 @@ export function Puck({
                         )}
                       </SidebarSection>
                     </div>
-                          <div className={getClassName("rightSideBar")}>
-                            <FieldWrapper dispatch={dispatch} state={appState}>
-                              <SidebarSection
-                                noPadding
-                                showBreadcrumbs
-                                title={selectedItem ? selectedItem.type : "Page"}
-                                isLoading={
-                                  selectedItem
-                                    ? componentState[selectedItem?.props.id]?.loading
-                                    : componentState["puck-root"]?.loading
+                    <div className={getClassName("rightSideBar")}>
+                      <FieldWrapper dispatch={dispatch} state={appState}>
+                        <SidebarSection
+                          noPadding
+                          showBreadcrumbs
+                          title={selectedItem ? selectedItem.type : "Page"}
+                          isLoading={
+                            selectedItem
+                              ? componentState[selectedItem?.props.id]?.loading
+                              : componentState["puck-root"]?.loading
+                          }
+                        >
+                          {Object.keys(fields).map((fieldName) => {
+                            const field = fields[fieldName];
+
+                            const onChange = (
+                              value: any,
+                              updatedUi?: Partial<UiState>
+                            ) => {
+                              let currentProps;
+
+                              if (selectedItem) {
+                                currentProps = selectedItem.props;
+                              } else {
+                                currentProps = rootProps;
+                              }
+
+                              const newProps = {
+                                ...currentProps,
+                                [fieldName]: value,
+                              };
+
+                              if (itemSelector) {
+                                const replaceActionData: ReplaceAction = {
+                                  type: "replace",
+                                  destinationIndex: itemSelector.index,
+                                  destinationZone:
+                                    itemSelector.zone || rootDroppableId,
+                                  data: { ...selectedItem, props: newProps },
+                                };
+
+                                // We use `replace` action, then feed into `set` action so we can also process any UI changes
+                                const replacedData = replaceAction(
+                                  data,
+                                  replaceActionData
+                                );
+
+                                const setActionData: SetAction = {
+                                  type: "set",
+                                  state: {
+                                    data: { ...data, ...replacedData },
+                                    ui: { ...ui, ...updatedUi },
+                                  },
+                                };
+
+                                // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
+                                if (
+                                  config.components[selectedItem!.type]
+                                    ?.resolveData
+                                ) {
+                                  resolveData(
+                                    setAction(appState, setActionData)
+                                  );
+                                } else {
+                                  dispatch({
+                                    ...setActionData,
+                                    recordHistory: true,
+                                  });
                                 }
-                              >
-                                {Object.keys(fields).map((fieldName) => {
-                                  const field = fields[fieldName];
-      
-                                  const onChange = (
-                                    value: any,
-                                    updatedUi?: Partial<UiState>
-                                  ) => {
-                                    let currentProps;
-      
-                                    if (selectedItem) {
-                                      currentProps = selectedItem.props;
-                                    } else {
-                                      currentProps = rootProps;
-                                    }
-      
-                                    const newProps = {
-                                      ...currentProps,
-                                      [fieldName]: value,
-                                    };
-      
-                                    if (itemSelector) {
-                                      const replaceActionData: ReplaceAction = {
-                                        type: "replace",
-                                        destinationIndex: itemSelector.index,
-                                        destinationZone:
-                                          itemSelector.zone || rootDroppableId,
-                                        data: { ...selectedItem, props: newProps },
-                                      };
-      
-                                      // We use `replace` action, then feed into `set` action so we can also process any UI changes
-                                      const replacedData = replaceAction(
-                                        data,
-                                        replaceActionData
-                                      );
-      
-                                      const setActionData: SetAction = {
-                                        type: "set",
-                                        state: {
-                                          data: { ...data, ...replacedData },
-                                          ui: { ...ui, ...updatedUi },
-                                        },
-                                      };
-      
-                                      // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
-                                      if (
-                                        config.components[selectedItem!.type]
-                                          ?.resolveData
-                                      ) {
-                                        resolveData(
-                                          setAction(appState, setActionData)
-                                        );
-                                      } else {
-                                        dispatch({
-                                          ...setActionData,
-                                          recordHistory: true,
-                                        });
-                                      }
-                                    } else {
-                                      if (data.root.props) {
-                                        // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
-                                        if (config.root?.resolveData) {
-                                          resolveData({
-                                            ui: { ...ui, ...updatedUi },
-                                            data: {
-                                              ...data,
-                                              root: { props: newProps },
-                                            },
-                                          });
-                                        } else {
-                                          dispatch({
-                                            type: "set",
-                                            state: {
-                                              ui: { ...ui, ...updatedUi },
-                                              data: {
-                                                ...data,
-                                                root: { props: newProps },
-                                              },
-                                            },
-                                            recordHistory: true,
-                                          });
-                                        }
-                                      } else {
-                                        // DEPRECATED
-                                        dispatch({
-                                          type: "setData",
-                                          data: { root: newProps },
-                                        });
-                                      }
-                                    }
-                                  };
-      
-                                  if (selectedItem && itemSelector) {
-                                    const { readOnly = {} } = selectedItem;
-      
-                                    return (
-                                      <InputOrGroup
-                                        key={`${selectedItem.props.id}_${fieldName}`}
-                                        field={field}
-                                        name={fieldName}
-                                        id={`${selectedItem.props.id}_${fieldName}`}
-                                        label={field.label}
-                                        readOnly={readOnly[fieldName]}
-                                        readOnlyFields={readOnly}
-                                        value={selectedItem.props[fieldName]}
-                                        onChange={onChange}
-                                      />
-                                    );
+                              } else {
+                                if (data.root.props) {
+                                  // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
+                                  if (config.root?.resolveData) {
+                                    resolveData({
+                                      ui: { ...ui, ...updatedUi },
+                                      data: {
+                                        ...data,
+                                        root: { props: newProps },
+                                      },
+                                    });
                                   } else {
-                                    const { readOnly = {} } = data.root;
-      
-                                    return (
-                                      <InputOrGroup
-                                        key={`page_${fieldName}`}
-                                        field={field}
-                                        name={fieldName}
-                                        id={`root_${fieldName}`}
-                                        label={field.label}
-                                        readOnly={readOnly[fieldName]}
-                                        readOnlyFields={readOnly}
-                                        value={rootProps[fieldName]}
-                                        onChange={onChange}
-                                      />
-                                    );
+                                    dispatch({
+                                      type: "set",
+                                      state: {
+                                        ui: { ...ui, ...updatedUi },
+                                        data: {
+                                          ...data,
+                                          root: { props: newProps },
+                                        },
+                                      },
+                                      recordHistory: true,
+                                    });
                                   }
-                                })}
-                              </SidebarSection>
-                            </FieldWrapper>
-                          </div>
+                                } else {
+                                  // DEPRECATED
+                                  dispatch({
+                                    type: "setData",
+                                    data: { root: newProps },
+                                  });
+                                }
+                              }
+                            };
+
+                            if (selectedItem && itemSelector) {
+                              const { readOnly = {} } = selectedItem;
+
+                              return (
+                                <InputOrGroup
+                                  key={`${selectedItem.props.id}_${fieldName}`}
+                                  field={field}
+                                  name={fieldName}
+                                  id={`${selectedItem.props.id}_${fieldName}`}
+                                  label={field.label}
+                                  readOnly={readOnly[fieldName]}
+                                  readOnlyFields={readOnly}
+                                  value={selectedItem.props[fieldName]}
+                                  onChange={onChange}
+                                />
+                              );
+                            } else {
+                              const { readOnly = {} } = data.root;
+
+                              return (
+                                <InputOrGroup
+                                  key={`page_${fieldName}`}
+                                  field={field}
+                                  name={fieldName}
+                                  id={`root_${fieldName}`}
+                                  label={field.label}
+                                  readOnly={readOnly[fieldName]}
+                                  readOnlyFields={readOnly}
+                                  value={rootProps[fieldName]}
+                                  onChange={onChange}
+                                />
+                              );
+                            }
+                          })}
+                        </SidebarSection>
+                      </FieldWrapper>
+                    </div>
                     <div
                       className={getClassName("frame")}
                       onClick={() => setItemSelector(null)}

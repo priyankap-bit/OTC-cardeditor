@@ -22,12 +22,12 @@ const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: stri
   return { fontSize, fontColor, bgColor ,fontfamily};
 };
 export type HeadingProps = {
-  align: "left" | "center" | "right";
-  text?: string;
-  level?: _HeadingProps["rank"];
-  size: _HeadingProps["size"];
-  padding?: string;
-  rights: string;
+  Align: "left" | "center" | "right";
+  Text?: string;
+  Level?: _HeadingProps["rank"];
+  Size: _HeadingProps["size"];
+  Padding?: string;
+  Rights: string;
 };
 
 const sizeOptions = [
@@ -52,16 +52,16 @@ const levelOptions = [
 
 export const Heading: ComponentConfig<HeadingProps> = {
   fields: {
-    text: { type: "text" },
-    size: {
+    Text: { type: "text" },
+    Size: {
       type: "select",
       options: sizeOptions,
     },
-    level: {
+    Level: {
       type: "select",
       options: levelOptions,
     },
-    align: {
+    Align: {
       type: "radio",
       options: [
         { label: "Left", value: "left" },
@@ -69,8 +69,8 @@ export const Heading: ComponentConfig<HeadingProps> = {
         { label: "Right", value: "right" },
       ],
     },
-    padding: { type: "text" },
-    rights: {
+    Padding: { type: "text" },
+    Rights: {
       type: "radio",
       options: [
         { label: "Yes", value: "false" },
@@ -79,20 +79,20 @@ export const Heading: ComponentConfig<HeadingProps> = {
     },
   },
   defaultProps: {
-    align: "left",
-    text: "Heading",
-    padding: "24px",
-    size: "m",
-    rights:'true'
+    Align: "left",
+    Text: "Heading",
+    Padding: "24px",
+    Size: "m",
+    Rights:'true'
   },
-  render: ({ align, text, size, level, padding, rights }) => {
+  render: ({ Align, Text, Size, Level, Padding, Rights }) => {
     const globalvalue = Gloabalfontsize();
 
     return (
-      <Section className={rights} padding={padding} style={{backgroundColor:globalvalue.bgColor}} >
-        <_Heading size={size} rank={level as any}>
-          <span style={{ display: "block", textAlign: align, width: "100%" ,fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}}>
-            {text}
+      <Section className={Rights} padding={Padding} style={{backgroundColor:globalvalue.bgColor}} >
+        <_Heading size={Size} rank={Level as any}>
+          <span style={{ display: "block", textAlign: Align, width: "100%" ,fontSize:globalvalue.fontSize,color:globalvalue.fontColor, fontFamily:globalvalue.fontfamily,}}>
+            {Text}
           </span>
         </_Heading>
       </Section>

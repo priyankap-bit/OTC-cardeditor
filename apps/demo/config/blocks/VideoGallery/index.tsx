@@ -6,11 +6,11 @@ import { Carousel } from "react-bootstrap";
 import { Section } from "../../components/Section";
 
 const selectOption = [
-    { label: "YouTub", value: "YouTub" },
+    { label: "YouTube", value: "YouTube" },
     { label: "Vimo", value: "Vimo" },]
 
 export type VideoGalleryProps = {
-    carouselVideo: {
+    Videos: {
         Title: string;
         LinkType: string;
         upload: string;
@@ -59,9 +59,9 @@ const renderUploadedVideos = (item) => {
 export const VideoGallery: ComponentConfig<VideoGalleryProps> = {
 
     fields: {
-        carouselVideo: {
+        Videos: {
             type: "array",
-            getItemSummary: (item, i) => item.Title || `Feature #${i}`,
+            getItemSummary: (item, i) => item.Title || `Video #${i}`,
             defaultItemProps: {
                 Title: "",
                 LinkType: '',
@@ -78,19 +78,19 @@ export const VideoGallery: ComponentConfig<VideoGalleryProps> = {
 
     },
 
-    render: ({ carouselVideo }) => {
+    render: ({ Videos }) => {
 
         return (
             <Section style={{ margin: "10px" }}>
                 <span style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
-                    {carouselVideo == undefined ? <div style={{ height: "200px" }}>
+                    {Videos == undefined ? <div style={{ height: "200px" }}>
                         <span style={{ fontSize: "20px", fontWeight: "700" }}>SINGLE VIDEO</span>
                     </div> :
-                        carouselVideo.length > 0 ?
-                            carouselVideo[0].upload == '' ? <div style={{ height: "200px" }}>
+                        Videos.length > 0 ?
+                        Videos[0].upload == '' ? <div style={{ height: "200px" }}>
                                 <span style={{ fontSize: "20px", fontWeight: "700" }}>SINGLE VIDEO</span>
                             </div> :
-                                renderUploadedVideos(carouselVideo)
+                                renderUploadedVideos(Videos)
                             : ""
                     }
                 </span>

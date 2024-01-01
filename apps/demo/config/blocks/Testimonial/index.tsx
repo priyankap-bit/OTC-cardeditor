@@ -13,7 +13,7 @@ export type TestimonialProps = {
   //   image: string;
   //   name: string;
   //   title: string;
-  items: {
+  Items: {
     content: string;
     image: string;
     name: string;
@@ -35,9 +35,9 @@ const base64ToBlob = (base64String) => {
 
 export const Testimonial: ComponentConfig<TestimonialProps> = {
   fields: {
-    items: {
+    Items: {
       type: "array",
-      getItemSummary: (item, i) => item.alt || `Item #${i}`,
+      getItemSummary: (item, i) => item.alt || `Testimonial ${i}`,
       defaultItemProps: {
         content: "Content",
         image: "",
@@ -107,7 +107,7 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     // image: "",
     // name: "name",
     // title: "title",
-    items: [
+    Items: [
       {
         content: "Content",
         image: "",
@@ -116,17 +116,17 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
       },
     ],
   },
-  render: ({ items }) => {
+  render: ({ Items }) => {
     // const imageUrl = image ? URL.createObjectURL(base64ToBlob(image)) : null;
     return (
       // <div className={getClassName()} style={{ textAlign: "center", maxWidth:"1280px", marginLeft:"auto", marginRight:"auto" }}>
       <Section>
-        {items && items.length > 1 ? (
+        {Items && Items.length > 1 ? (
           <Carousel
             prevIcon={null} // Set to null to hide the previous arrow
             nextIcon={null} // Set to null to hide the next arrow
           >
-            {items.map((item, i) => (
+            {Items.map((item, i) => (
               <Carousel.Item key={i}>
                 <div className={getClassName("contents")}>
                   <div className={getClassName("talk-bubble")}>
@@ -195,7 +195,7 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
             ))}
           </Carousel>
         ) : (
-          items.map((item, i) => (
+          Items.map((item, i) => (
             <div key={i} className={getClassName("contents")}>
               <div className={getClassName("talk-bubble")}>
                 <div className={getClassName("talktext")}>

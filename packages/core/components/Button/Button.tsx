@@ -10,6 +10,7 @@ export const Button = ({
   href,
   onClick,
   variant = "primary",
+  align,
   type,
   disabled,
   tabIndex,
@@ -24,6 +25,7 @@ export const Button = ({
   onClick?: (e: any) => void | Promise<void>;
   variant?: "primary" | "secondary" | "success" | "info" | "warning" | "gray";
   type?: "button" | "submit" | "reset";
+  align?: "center" | "left" | "right";
   disabled?: boolean;
   tabIndex?: number;
   newTab?: boolean;
@@ -47,6 +49,7 @@ export const Button = ({
         info: variant === "info",
         warning: variant === "warning",
         gray: variant === "gray",
+        center: align === "center",
         disabled,
         fullWidth,
         [size]: true,

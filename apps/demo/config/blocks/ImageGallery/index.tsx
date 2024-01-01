@@ -7,7 +7,7 @@ import { Section } from "../../components/Section";
 
 
 export type ImageGalleryProps = {
-    carouselImage: {
+    Images: {
         alt: string;
         upload: string;
     }[];
@@ -59,9 +59,9 @@ const renderUploadedImages = (item) => {
 export const ImageGallery: ComponentConfig<ImageGalleryProps> = {
 
     fields: {
-        carouselImage: {
+        Images: {
             type: "array",
-            getItemSummary: (item, i) => item.alt || `Feature #${i}`,
+            getItemSummary: (item, i) => item.alt || `Image ${i}`,
             defaultItemProps: {
                 alt: "",
                 upload: "",
@@ -130,19 +130,18 @@ export const ImageGallery: ComponentConfig<ImageGalleryProps> = {
     },
 
 
-    render: ({ carouselImage }) => {
-        console.log(carouselImage, "carouselImage");
+    render: ({ Images }) => {
 
         return (
             <Section style={{margin:"10px"}}>
                 <span style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
-                    {carouselImage != undefined ?
+                    {Images != undefined ?
 
-                        carouselImage.length > 0 ?
-                            carouselImage[0].upload == '' ? <div style={{ height: "200px" }}>
+                        Images.length > 0 ?
+                          Images[0].upload == '' ? <div style={{ height: "200px" }}>
                                 <span style={{ fontSize: "20px", fontWeight: "700" }}>IMAGE GALLERY</span>
                             </div> :
-                                renderUploadedImages(carouselImage)
+                                renderUploadedImages(Images)
                             : "" : <div style={{ height: "200px" }}>
                             <span style={{ fontSize: "20px", fontWeight: "700" }}>IMAGE GALLERY</span>
                         </div>

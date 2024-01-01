@@ -43,7 +43,7 @@
 
 .Button--primary {
   /* background: var(--puck-color-blue); */
-  background: #2572E6;
+  background: #4154E9;
   border: 1px solid #FFF;
   border-radius: 4px;
 }
@@ -102,6 +102,10 @@
   border: 1px solid #FFF;
   border-radius: 4px;
   color: #ffffff;
+}
+
+.Button--center{
+  justify-content: center;
 }
 .Button--flush {
   border-radius: 0;

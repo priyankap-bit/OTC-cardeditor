@@ -48,7 +48,7 @@ export const Card: ComponentConfig<CardProps> = {
 
     Designations: {
       type: "array",
-      getItemSummary: (item, i) => item.alt || `Feature #${i}`,
+      getItemSummary: (item, i) => item.alt || `Designations ${i}`,
       defaultItemProps: {
         alt: "",
       },
