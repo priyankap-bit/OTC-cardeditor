@@ -155,7 +155,7 @@ export const VideoGallery: ComponentConfig<VideoGalleryProps> = {
             arrayFields: {
                 Title: { type: "text" },
                 // LinkType: { type: "select", options: selectOption },
-                upload: { type: "text" },
+                upload: { type: "text", label: "Video link: (youtube/vimeo)" },
                 image: {
                     type: "custom",
                     render: ({ name, onChange, value, ...rest }) => {

@@ -86,7 +86,7 @@ export const SingleVideo: ComponentConfig<SingleVideoProps> = {
 
     fields: {
         // LinkType: { type: "select", options: selectOption },
-        Upload: { type: "text", label: "Video link:" },
+        Upload: { type: "text", label: "Video link: (youtube/vimeo)" },
         image: {
             type: "custom",
             render: ({ name, onChange, value, ...rest }) => {
