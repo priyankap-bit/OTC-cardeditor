@@ -34,8 +34,7 @@ export const GlobalTools = () => {
 
   const handleBgColorChange = (event) => {
     const newColor = event.target.value;
-    console.log("new bg color",newColor);
-    
+
     dispatch(setBgColor(newColor));
   };
 
@@ -49,6 +48,7 @@ export const GlobalTools = () => {
 
   const [isExpanded, setExpanded] = useState(false);
   const [isExpandedTypography, setExpandedTypography] = useState(false);
+  const [isExpandedSections, setExpandedSections] = useState(false);
 
   const handleToggle = () => {
     setExpanded(!isExpanded);
@@ -58,14 +58,17 @@ export const GlobalTools = () => {
     setExpandedTypography(!isExpandedTypography);
   };
 
+  const handleToggleSections = () => {
+    setExpandedSections(!isExpandedSections);
+  };
+
   return (
     <>
       <div>
         <div onClick={handleToggle} className={getClassName("globalItem")}>
-          
-            {isExpanded ? (
-              <>
-              <div className={getClassName("globalItemVentor")} >
+          {isExpanded ? (
+            <>
+              <div className={getClassName("globalItemVentor")}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"
@@ -78,14 +81,17 @@ export const GlobalTools = () => {
                     fill="#333333"
                   />
                 </svg>
-                </div>
-              </>
-            ) : (
-              <>
-              <div className={getClassName("globalItemVentor")} style={{
-                marginLeft: "-7px",
-                marginRight: "4px"
-              }}>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                className={getClassName("globalItemVentor")}
+                style={{
+                  marginLeft: "-7px",
+                  marginRight: "4px",
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
@@ -98,9 +104,9 @@ export const GlobalTools = () => {
                     fill="#333333"
                   />
                 </svg>
-                </div>
-              </>
-            )}
+              </div>
+            </>
+          )}
           <div className={getClassName("mainTitle")}>
             <p style={{ marginTop: "4px" }}>Default Brand Colors</p>
           </div>
@@ -432,9 +438,9 @@ export const GlobalTools = () => {
           onClick={handleToggleTypography}
           className={getClassName("globalItem")}
         >
-           {isExpandedTypography ? (
-              <>
-              <div className={getClassName("globalItemVentor")} >
+          {isExpandedTypography ? (
+            <>
+              <div className={getClassName("globalItemVentor")}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"
@@ -447,14 +453,17 @@ export const GlobalTools = () => {
                     fill="#333333"
                   />
                 </svg>
-                </div>
-              </>
-            ) : (
-              <>
-              <div className={getClassName("globalItemVentor")} style={{
-                marginLeft: "-7px",
-                marginRight: "4px"
-              }}>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                className={getClassName("globalItemVentor")}
+                style={{
+                  marginLeft: "-7px",
+                  marginRight: "4px",
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
@@ -467,9 +476,9 @@ export const GlobalTools = () => {
                     fill="#333333"
                   />
                 </svg>
-                </div>
-              </>
-            )}
+              </div>
+            </>
+          )}
           <div className={getClassName("mainTitle")}>
             <p style={{ marginTop: "4px" }}>Default Typography</p>
           </div>
@@ -491,7 +500,7 @@ export const GlobalTools = () => {
                   // value={bgColor}
                   className={getClassName("colorpikar")}
                 />
-                <svg
+                {/* <svg
                   className={getClassName("svg")}
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -503,7 +512,7 @@ export const GlobalTools = () => {
                     d="M13.14 4.695C13.4 4.435 13.4 4.00167 13.14 3.755L11.58 2.195C11.3333 1.935 10.9 1.935 10.64 2.195L9.33333 3.50167L11.8333 6.00167M11.1667 6.66833L8.66667 4.16833L2 10.835V13.335H4.5L11.1667 6.66833Z"
                     fill="black"
                   />
-                </svg>
+                </svg> */}
               </div>
             </div>
             <div className={getClassName("expandedItems")}>
@@ -521,7 +530,7 @@ export const GlobalTools = () => {
                   // value={bgColor}
                   className={getClassName("colorpikar")}
                 />
-                <svg
+                {/* <svg
                   className={getClassName("svg")}
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -533,7 +542,7 @@ export const GlobalTools = () => {
                     d="M13.14 4.695C13.4 4.435 13.4 4.00167 13.14 3.755L11.58 2.195C11.3333 1.935 10.9 1.935 10.64 2.195L9.33333 3.50167L11.8333 6.00167M11.1667 6.66833L8.66667 4.16833L2 10.835V13.335H4.5L11.1667 6.66833Z"
                     fill="black"
                   />
-                </svg>
+                </svg> */}
               </div>
             </div>
           </div>
@@ -544,6 +553,141 @@ export const GlobalTools = () => {
             borderTop: "1px solid #000",
           }}
         />
+
+        {/* <div
+          onClick={handleToggleSections}
+          className={getClassName("globalItem")}
+        >
+          {isExpandedSections ? (
+            <>
+              <div className={getClassName("globalItemVentor")}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="6"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                >
+                  <path
+                    d="M4.58333 5.29232L0 0.708984H9.16667L4.58333 5.29232Z"
+                    fill="#333333"
+                  />
+                </svg>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                className={getClassName("globalItemVentor")}
+                style={{
+                  marginLeft: "-7px",
+                  marginRight: "4px",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="23"
+                  viewBox="0 0 22 23"
+                  fill="none"
+                >
+                  <path
+                    d="M10.9987 9.14128L15.582 13.7246L6.41537 13.7246L10.9987 9.14128Z"
+                    fill="#333333"
+                  />
+                </svg>
+              </div>
+            </>
+          )}
+          <div className={getClassName("mainTitle")}>
+            <p style={{ marginTop: "4px" }}>Sections</p>
+          </div>
+        </div>
+        {isExpandedSections && (
+          <div>
+             <div className={getClassName("expandedItems")}>
+              <div
+                className={getClassName("mainTitle")}
+                style={{ fontStyle: "14px" }}
+              >
+                <p>Divider</p>
+              </div>
+            </div>
+            <div className={getClassName("expandedItems")}>
+              <div className={getClassName("title")}>
+                <p>Divider color</p>
+              </div>
+              <div
+                // className={getClassName("svgDiv")}
+                style={{ position: "relative" }}
+              >
+                <input
+                  type="color"
+                  id="bgColor"
+                  onChange={handleBgColorChange}
+                  // value={bgColor}
+                  className={getClassName("colorpikar")}
+                />
+              </div>
+            </div>
+            <div className={getClassName("expandedItems")}>
+              <div className={getClassName("title")}>
+                <p>Icon color</p>
+              </div>
+              <div
+                // className={getClassName("svgDiv")}
+                style={{ position: "relative" }}
+              >
+                <input
+                  type="color"
+                  id="bgColor"
+                  onChange={handleBgColorChange}
+                  // value={bgColor}
+                  className={getClassName("colorpikar")}
+                />
+              </div>
+            </div>
+            <div className={getClassName("expandedItem")}>
+              <div className={getClassName("title")}>
+                <p>Divider Padding</p>
+              </div>
+              <div style={{ display: "flex"}}>
+                <input type="number" style={{ width: "50px"}} />
+                <input type="number" style={{ width: "50px"}} />
+                <input type="number" style={{ width: "50px"}} />
+              </div>
+              
+            </div>
+            <div className={getClassName("expandedItems")}>
+              <div
+                className={getClassName("mainTitle")}
+                style={{ fontStyle: "14px" }}
+              >
+                <p>Title</p>
+              </div>
+            </div>
+            <div className={getClassName("expandedItems")}>
+              <div className={getClassName("title")}>
+                <p>Title padding</p>
+              </div>
+              
+            </div>
+
+            <div className={getClassName("expandedItems")}>
+              <div
+                className={getClassName("mainTitle")}
+                style={{ fontStyle: "14px" }}
+              >
+                <p>Padding</p>
+              </div>
+            </div>
+          </div>
+        )}
+         <div
+          style={{
+            borderTop: "1px solid #000",
+          }}
+        /> */}
       </div>
       {/* Font size input */}
       {/* <div className={getClassName("container")} >

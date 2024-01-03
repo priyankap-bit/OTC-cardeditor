@@ -62,6 +62,10 @@
   padding: 1px 10px;
 }
 
+.globalstyle-expandedItem {
+  padding: 1px 10px;
+}
+
 .globalstyle-svgDiv {
   display: flex;
   padding: 6px;
