@@ -360,7 +360,7 @@ export const GlobalTools = () => {
                   // value={bgColor}
                   className={getClassName("colorpikar")}
                 />
-                <svg
+                {/* <svg
                   className={getClassName("svg")}
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -373,7 +373,7 @@ export const GlobalTools = () => {
                     // fill={bgColor === "#ffffff" ? "black" : "white"}
                     fill="white"
                   />
-                </svg>
+                </svg> */}
               </div>
             </div>
 
@@ -390,41 +390,17 @@ export const GlobalTools = () => {
               <div className={getClassName("title")}>
                 <p>Green</p>
               </div>
-              <div style={{ display: "flex" }}>
-                <div
-                  className={getClassName("svgDiv")}
-                  style={{ background: "#fff" }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M7 21C6.45 21 5.979 20.804 5.587 20.412C5.195 20.02 4.99933 19.5493 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.804 20.021 18.412 20.413C18.02 20.805 17.5493 21.0007 17 21H7ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
-                      fill="#8A8A8A"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={getClassName("svgDiv")}
-                  style={{ background: "#48AF25" }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M4.61333 12.6664L3.33333 11.3864L8.70667 5.99971L10 7.29305M13.8067 3.75305L12.2467 2.19305C12 1.93305 11.5667 1.93305 11.3067 2.19305L9.22667 4.27305L7.94 2.99971L7 3.93971L7.94667 4.88638L2 10.833V13.9997H5.16667L11.1133 8.05305L12.06 8.99971L13 8.05971L11.72 6.77971L13.8 4.69971C14.0667 4.43305 14.0667 3.99971 13.8067 3.75305Z"
-                      fill="white"
-                    />
-                  </svg>
-                </div>
+              <div
+                // className={getClassName("svgDiv")}
+                style={{ position: "relative" }}
+              >
+                <input
+                  type="color"
+                  id="bgColor"
+                  // onChange={handleBgColorChange}
+                  value={"#48AF25"}
+                  className={getClassName("colorpikar")}
+                />
               </div>
             </div>
           </div>

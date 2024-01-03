@@ -13,6 +13,7 @@ export type TestimonialProps = {
   //   image: string;
   //   name: string;
   //   title: string;
+  HideDivider: true | false;
   Items: {
     content: string;
     image: string;
@@ -35,6 +36,13 @@ const base64ToBlob = (base64String) => {
 
 export const Testimonial: ComponentConfig<TestimonialProps> = {
   fields: {
+    HideDivider: {
+      type: "radio",
+      options: [
+        { label: "Yes", value: true },
+        { label: "No", value: false },
+      ],
+    },
     Items: {
       type: "array",
       getItemSummary: (item, i) => item.alt || `Testimonial ${i}`,
@@ -107,6 +115,7 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     // image: "",
     // name: "name",
     // title: "title",
+    HideDivider: true,
     Items: [
       {
         content: "Content",
@@ -116,11 +125,25 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
       },
     ],
   },
-  render: ({ Items }) => {
+  render: ({ Items, HideDivider }) => {
     // const imageUrl = image ? URL.createObjectURL(base64ToBlob(image)) : null;
     return (
       // <div className={getClassName()} style={{ textAlign: "center", maxWidth:"1280px", marginLeft:"auto", marginRight:"auto" }}>
       <Section>
+        {HideDivider && (
+          <div className={getClassName("divider")}>
+            <div className={getClassName("dividerOne")}></div>
+            <div className={getClassName("icon")}>
+              <img
+                width="30"
+                height="30"
+                src="https://img.icons8.com/fluency-systems-filled/48/star.png"
+                alt="star"
+              />
+            </div>
+            <div className={getClassName("dividerOne")}></div>
+          </div>
+        )}
         {Items && Items.length > 1 ? (
           <Carousel
             prevIcon={null} // Set to null to hide the previous arrow
@@ -165,22 +188,22 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                     <div className={getClassName("text-info")}>
                       <div
                         className={getClassName("name")}
-                        style={{ textAlign: "left"}}
+                        style={{ textAlign: "left" }}
                       >
                         {/* {item.name} */}
                         <span
-                        style={{
-                          fontWeight: "bold",
-                          marginLeft: "auto",
-                          marginRight: "auto",
-                          justifyContent: "center",
-                          maxWidth: "100%",
-                          wordWrap: "break-word",
-                        }}
-                        className={getClassName("p")}
-                      >
-                        {item.name}
-                      </span>
+                          style={{
+                            fontWeight: "bold",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            justifyContent: "center",
+                            maxWidth: "100%",
+                            wordWrap: "break-word",
+                          }}
+                          className={getClassName("p")}
+                        >
+                          {item.name}
+                        </span>
                       </div>
                       <div
                         className={getClassName("title")}
@@ -233,22 +256,22 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                 <div className={getClassName("text-info")}>
                   <div
                     className={getClassName("name")}
-                    style={{textAlign: "left",  }}
+                    style={{ textAlign: "left" }}
                   >
                     {/* {item.name} */}
                     <span
-                        style={{
-                          fontWeight: "bold",
-                          marginLeft: "auto",
-                          marginRight: "auto",
-                          justifyContent: "center",
-                          maxWidth: "100%",
-                          wordWrap: "break-word",
-                        }}
-                        className={getClassName("p")}
-                      >
-                        {item.name}
-                      </span>
+                      style={{
+                        fontWeight: "bold",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        justifyContent: "center",
+                        maxWidth: "100%",
+                        wordWrap: "break-word",
+                      }}
+                      className={getClassName("p")}
+                    >
+                      {item.name}
+                    </span>
                   </div>
                   <div
                     className={getClassName("title")}

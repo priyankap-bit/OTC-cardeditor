@@ -79,6 +79,7 @@
     width: 33px;
     height: 32px;
     border: none;
+    cursor: pointer;
 }
 
 .globalstyle-svg{
