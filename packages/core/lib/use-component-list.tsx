@@ -38,6 +38,8 @@ export const useComponentList = (config: Config, ui: UiState) => {
         { componentname: "ButtonGroup", plans: ["Free","Team"] },
         { componentname: "Card", plans: ["Free","Professional","Team"] },
         { componentname: "ImageGallery", plans: ["Free", "Team"] },
+        { componentname: "ImageGrid", plans: ["Free", "Team"] },
+        { componentname: "ImageCarousel", plans: ["Free", "Team"] },
         { componentname: "Columns", plans: ["Free","Team"] },
         { componentname: "Hero", plans: ["Free","Team"] },
         { componentname: "Heading", plans: ["Free","Team"] },
