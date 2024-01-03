@@ -136,50 +136,51 @@ const HeadingOutlineAnalyer = ({
             mapping={{
               Root: (props) => <>{props.children}</>,
               OutlineListItem: (props) => (
-                <OutlineList.Item>
-                  <OutlineList.Clickable>
-                    <small
-                      onClick={
-                        typeof props.analyzeId == "undefined"
-                          ? undefined
-                          : (e) => {
-                              e.stopPropagation();
+                // <OutlineList.Item>
+                //   <OutlineList.Clickable>
+                //     <small
+                //       onClick={
+                //         typeof props.analyzeId == "undefined"
+                //           ? undefined
+                //           : (e) => {
+                //               e.stopPropagation();
 
-                              const el = document.querySelector(
-                                `[${dataAttr}="${props.analyzeId}"]`
-                              ) as HTMLElement;
+                //               const el = document.querySelector(
+                //                 `[${dataAttr}="${props.analyzeId}"]`
+                //               ) as HTMLElement;
 
-                              const oldStyle = { ...el.style };
+                //               const oldStyle = { ...el.style };
 
-                              if (el) {
-                                scrollIntoView(el);
+                //               if (el) {
+                //                 scrollIntoView(el);
 
-                                el.style.outline =
-                                  "4px solid var(--puck-color-rose-5)";
-                                el.style.outlineOffset = "4px";
+                //                 el.style.outline =
+                //                   "4px solid var(--puck-color-rose-5)";
+                //                 el.style.outlineOffset = "4px";
 
-                                setTimeout(() => {
-                                  el.style.outline = oldStyle.outline || "";
-                                  el.style.outlineOffset =
-                                    oldStyle.outlineOffset || "";
-                                }, 2000);
-                              }
-                            }
-                      }
-                    >
-                      {props.missing ? (
-                        <span style={{ color: "var(--puck-color-red)" }}>
-                          <b>H{props.rank}</b>: Missing
-                        </span>
-                      ) : (
-                        <span>
-                          <b>H{props.rank}</b>: {props.text}
-                        </span>
-                      )}
-                    </small>
-                  </OutlineList.Clickable>
-                  <OutlineList>{props.children}</OutlineList>
-                </OutlineList.Item>
+                //                 setTimeout(() => {
+                //                   el.style.outline = oldStyle.outline || "";
+                //                   el.style.outlineOffset =
+                //                     oldStyle.outlineOffset || "";
+                //                 }, 2000);
+                //               }
+                //             }
+                //       }
+                //     >
+                //       {props.missing ? (
+                //         <span style={{ color: "var(--puck-color-red)" }}>
+                //           <b>H{props.rank}</b>: Missing
+                //         </span>
+                //       ) : (
+                //         <span>
+                //           <b>H{props.rank}</b>: {props.text}
+                //         </span>
+                //       )}
+                //     </small>
+                //   </OutlineList.Clickable>
+                // </OutlineList.Item>
+                <OutlineList>{props.children}</OutlineList>
+
               ),
             }}
             entry={{
@@ -200,7 +201,7 @@ const HeadingOutlineAnalyer = ({
         </OutlineList>
       {/* </SidebarSection> */}
       <Provider store={store}>
-      <GlobalTools/>
+      <GlobalTools />
       </Provider>
     </>
   );

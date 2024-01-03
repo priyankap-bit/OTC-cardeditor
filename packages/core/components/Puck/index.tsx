@@ -346,8 +346,6 @@ export function Puck({
     // Toggle the showComponentsSection state
     if (selectedItem) {
       setItemSelector(null);      
-      setShowGlobaleProps(false)
-      setIsClicked(false);  
     }  
     setShowComponentsSection(!showComponentsSection);  
     setIsClicked(!isClicked);  
@@ -778,6 +776,9 @@ export function Puck({
                             }
                           >
                             {Object.keys(fields).map((fieldName) => {
+                              setIsClicked(false);
+                              setShowGlobaleProps(false);
+                              setShowComponentsSection(false);
                               const field = fields[fieldName];
 
                               const onChange = (
@@ -915,6 +916,7 @@ export function Puck({
                           isLoading={componentState["puck-root"]?.loading}
                         >
                           {Object.keys(fields).map((fieldName) => {
+
                             const field = fields[fieldName];
                       
                             const onChange = (

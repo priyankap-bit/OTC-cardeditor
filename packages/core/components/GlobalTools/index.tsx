@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import RootState from "./RootState/index";
 import styles from "./styles.module.css";
 import { getClassNameFactory } from "../../../core/lib";
+import { DropZone, DropZoneProvider, dropZoneContext } from "../DropZone";
 
 const getClassName = getClassNameFactory("globalstyle", styles);
 
@@ -23,7 +24,7 @@ export const GlobalTools = () => {
   const fontFamily = useSelector((state: RootState) => state.app.fontfamily);
   const handleChange = (event) => {
     const newSize = parseInt(event.target.value, 10);
-    dispatch(setFontSize(newSize));
+    // dispatch(setFontSize(newSize));
   };
 
   const handleFontColorChange = (event) => {
@@ -33,6 +34,8 @@ export const GlobalTools = () => {
 
   const handleBgColorChange = (event) => {
     const newColor = event.target.value;
+    console.log("new bg color",newColor);
+    
     dispatch(setBgColor(newColor));
   };
 
@@ -41,7 +44,7 @@ export const GlobalTools = () => {
 
   const handleFontFamilyChange = (event) => {
     const newFamily = event.target.value;
-    dispatch(setFontFamily(newFamily));
+    // dispatch(setFontFamily(newFamily));
   };
 
   const [isExpanded, setExpanded] = useState(false);
@@ -274,8 +277,8 @@ export const GlobalTools = () => {
                 <input
                   type="color"
                   id="bgColor"
-                  // onChange={handleBgColorChange}
-                  // value={bgColor}
+                  onChange={handleFontColorChange}
+                  value={fontColor}
                   className={getClassName("colorpikar")}
                 />
                 <svg
@@ -348,7 +351,7 @@ export const GlobalTools = () => {
                   type="color"
                   id="bgColor"
                   onChange={handleBgColorChange}
-                  value={bgColor}
+                  // value={bgColor}
                   className={getClassName("colorpikar")}
                 />
                 <svg
@@ -361,7 +364,8 @@ export const GlobalTools = () => {
                 >
                   <path
                     d="M13.125 9C12.8266 9 12.5405 8.88147 12.3295 8.6705C12.1185 8.45952 12 8.17337 12 7.875C12 7.57663 12.1185 7.29048 12.3295 7.0795C12.5405 6.86853 12.8266 6.75 13.125 6.75C13.4234 6.75 13.7095 6.86853 13.9205 7.0795C14.1315 7.29048 14.25 7.57663 14.25 7.875C14.25 8.17337 14.1315 8.45952 13.9205 8.6705C13.7095 8.88147 13.4234 9 13.125 9ZM10.875 6C10.5766 6 10.2905 5.88147 10.0795 5.6705C9.86853 5.45952 9.75 5.17337 9.75 4.875C9.75 4.57663 9.86853 4.29048 10.0795 4.0795C10.2905 3.86853 10.5766 3.75 10.875 3.75C11.1734 3.75 11.4595 3.86853 11.6705 4.0795C11.8815 4.29048 12 4.57663 12 4.875C12 5.17337 11.8815 5.45952 11.6705 5.6705C11.4595 5.88147 11.1734 6 10.875 6ZM7.125 6C6.82663 6 6.54048 5.88147 6.3295 5.6705C6.11853 5.45952 6 5.17337 6 4.875C6 4.57663 6.11853 4.29048 6.3295 4.0795C6.54048 3.86853 6.82663 3.75 7.125 3.75C7.42337 3.75 7.70952 3.86853 7.9205 4.0795C8.13147 4.29048 8.25 4.57663 8.25 4.875C8.25 5.17337 8.13147 5.45952 7.9205 5.6705C7.70952 5.88147 7.42337 6 7.125 6ZM4.875 9C4.57663 9 4.29048 8.88147 4.0795 8.6705C3.86853 8.45952 3.75 8.17337 3.75 7.875C3.75 7.57663 3.86853 7.29048 4.0795 7.0795C4.29048 6.86853 4.57663 6.75 4.875 6.75C5.17337 6.75 5.45952 6.86853 5.6705 7.0795C5.88147 7.29048 6 7.57663 6 7.875C6 8.17337 5.88147 8.45952 5.6705 8.6705C5.45952 8.88147 5.17337 9 4.875 9ZM9 2.25C7.20979 2.25 5.4929 2.96116 4.22703 4.22703C2.96116 5.4929 2.25 7.20979 2.25 9C2.25 10.7902 2.96116 12.5071 4.22703 13.773C5.4929 15.0388 7.20979 15.75 9 15.75C9.29837 15.75 9.58452 15.6315 9.7955 15.4205C10.0065 15.2095 10.125 14.9234 10.125 14.625C10.125 14.3325 10.0125 14.07 9.8325 13.875C9.66 13.6725 9.5475 13.41 9.5475 13.125C9.5475 12.8266 9.66603 12.5405 9.87701 12.3295C10.088 12.1185 10.3741 12 10.6725 12H12C12.9946 12 13.9484 11.6049 14.6517 10.9017C15.3549 10.1984 15.75 9.24456 15.75 8.25C15.75 4.935 12.7275 2.25 9 2.25Z"
-                    fill={bgColor === "#ffffff" ? "black" : "white"}
+                    // fill={bgColor === "#ffffff" ? "black" : "white"}
+                    fill="white"
                   />
                 </svg>
               </div>
@@ -484,7 +488,7 @@ export const GlobalTools = () => {
                   type="color"
                   id="bgColor"
                   onChange={handleBgColorChange}
-                  value={bgColor}
+                  // value={bgColor}
                   className={getClassName("colorpikar")}
                 />
                 <svg
@@ -514,7 +518,7 @@ export const GlobalTools = () => {
                   type="color"
                   id="bgColor"
                   onChange={handleBgColorChange}
-                  value={bgColor}
+                  // value={bgColor}
                   className={getClassName("colorpikar")}
                 />
                 <svg
