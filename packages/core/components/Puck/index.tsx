@@ -338,6 +338,31 @@ export function Puck({
     };
   }, []);
 
+  const [showComponentsSection, setShowComponentsSection] = useState(false);
+  const [showGlobaleProps, setShowGlobaleProps] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
+  
+  const handleAddBlockButtonClick = () => {
+    // Toggle the showComponentsSection state
+    if (selectedItem) {
+      setItemSelector(null);      
+      setShowGlobaleProps(false)
+      setIsClicked(false);  
+    }  
+    setShowComponentsSection(!showComponentsSection);  
+    setIsClicked(!isClicked);  
+    setShowGlobaleProps(false)
+  };
+
+  const handleGlobaleStyleButton = () => {
+    if (selectedItem) {
+      setItemSelector(null);      
+    }  
+    setShowGlobaleProps(!showGlobaleProps)
+    setShowComponentsSection(false)
+    setIsClicked(false);  
+  }
+  
   return (
     <div>
       <AppProvider
@@ -574,6 +599,7 @@ export function Puck({
                             </Heading> */}
                             <Button
                             // icon={<Edit size="14px" />}
+                            onClick={handleGlobaleStyleButton}
                             >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -657,11 +683,18 @@ export function Puck({
                           </svg>
                           Add Section
                         </Button>
-                        <Button variant="gray" align="center">
+                        <Button
+                          variant={isClicked ? 'gray' : 'info'}
+                          align="center"
+                          // onClick={() =>
+                          //   setShowComponentsSection(!showComponentsSection)
+                          // }
+                          onClick={handleAddBlockButtonClick}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="25"
+                            width="20"
+                            height="20"
                             viewBox="0 0 25 25"
                             fill="none"
                           >
@@ -673,15 +706,7 @@ export function Puck({
                           Add Block
                         </Button>
                       </div>
-                      <SidebarSection title="Components">
-                        <ComponentListWrapper>
-                          {componentList ? (
-                            componentList
-                          ) : (
-                            <ComponentList id="all" />
-                          )}
-                        </ComponentListWrapper>
-                      </SidebarSection>
+
                       <SidebarSection title="Outline">
                         {ctx?.activeZones &&
                           ctx?.activeZones[rootDroppableId] && (
@@ -716,144 +741,243 @@ export function Puck({
                       </SidebarSection>
                     </div>
                     <div className={getClassName("rightSideBar")}>
-                      <FieldWrapper dispatch={dispatch} state={appState}>
-                        <SidebarSection
-                          noPadding
-                          showBreadcrumbs
-                          title={selectedItem ? selectedItem.type : "Page"}
-                          isLoading={
-                            selectedItem
-                              ? componentState[selectedItem?.props.id]?.loading
-                              : componentState["puck-root"]?.loading
-                          }
-                        >
-                          {Object.keys(fields).map((fieldName) => {
-                            const field = fields[fieldName];
+                      {/* {showComponentsSection && (
+                        <SidebarSection title="Components">
+                          <ComponentListWrapper>
+                            {componentList ? (
+                              componentList
+                            ) : (
+                              <ComponentList id="all" />
+                            )}
+                          </ComponentListWrapper>
+                        </SidebarSection>
+                      )} */}
+                      {!selectedItem && showComponentsSection && (
+                        <SidebarSection title="Components">
+                          <ComponentListWrapper>
+                            {componentList ? (
+                              componentList
+                            ) : (
+                              <ComponentList id="all" />
+                            )}
+                          </ComponentListWrapper>
+                        </SidebarSection>
+                      )}
 
-                            const onChange = (
-                              value: any,
-                              updatedUi?: Partial<UiState>
-                            ) => {
-                              let currentProps;
+                      {selectedItem &&  (
+                        <FieldWrapper dispatch={dispatch} state={appState}>
+                          <SidebarSection
+                            noPadding
+                            // showBreadcrumbs
+                            title={selectedItem ? selectedItem.type : "Page"}
+                            isLoading={
+                              selectedItem
+                                ? componentState[selectedItem?.props.id]
+                                    ?.loading
+                                : componentState["puck-root"]?.loading
+                            }
+                          >
+                            {Object.keys(fields).map((fieldName) => {
+                              const field = fields[fieldName];
 
-                              if (selectedItem) {
-                                currentProps = selectedItem.props;
-                              } else {
-                                currentProps = rootProps;
-                              }
+                              const onChange = (
+                                value: any,
+                                updatedUi?: Partial<UiState>
+                              ) => {
+                                let currentProps;
 
-                              const newProps = {
-                                ...currentProps,
-                                [fieldName]: value,
-                              };
-
-                              if (itemSelector) {
-                                const replaceActionData: ReplaceAction = {
-                                  type: "replace",
-                                  destinationIndex: itemSelector.index,
-                                  destinationZone:
-                                    itemSelector.zone || rootDroppableId,
-                                  data: { ...selectedItem, props: newProps },
-                                };
-
-                                // We use `replace` action, then feed into `set` action so we can also process any UI changes
-                                const replacedData = replaceAction(
-                                  data,
-                                  replaceActionData
-                                );
-
-                                const setActionData: SetAction = {
-                                  type: "set",
-                                  state: {
-                                    data: { ...data, ...replacedData },
-                                    ui: { ...ui, ...updatedUi },
-                                  },
-                                };
-
-                                // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
-                                if (
-                                  config.components[selectedItem!.type]
-                                    ?.resolveData
-                                ) {
-                                  resolveData(
-                                    setAction(appState, setActionData)
-                                  );
+                                if (selectedItem) {
+                                  currentProps = selectedItem.props;
                                 } else {
-                                  dispatch({
-                                    ...setActionData,
-                                    recordHistory: true,
-                                  });
+                                  currentProps = rootProps;
                                 }
-                              } else {
-                                if (data.root.props) {
-                                  // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
-                                  if (config.root?.resolveData) {
-                                    resolveData({
+
+                                const newProps = {
+                                  ...currentProps,
+                                  [fieldName]: value,
+                                };
+
+                                if (itemSelector) {
+                                  const replaceActionData: ReplaceAction = {
+                                    type: "replace",
+                                    destinationIndex: itemSelector.index,
+                                    destinationZone:
+                                      itemSelector.zone || rootDroppableId,
+                                    data: { ...selectedItem, props: newProps },
+                                  };
+
+                                  // We use `replace` action, then feed into `set` action so we can also process any UI changes
+                                  const replacedData = replaceAction(
+                                    data,
+                                    replaceActionData
+                                  );
+
+                                  const setActionData: SetAction = {
+                                    type: "set",
+                                    state: {
+                                      data: { ...data, ...replacedData },
                                       ui: { ...ui, ...updatedUi },
-                                      data: {
-                                        ...data,
-                                        root: { props: newProps },
-                                      },
-                                    });
+                                    },
+                                  };
+
+                                  // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
+                                  if (
+                                    config.components[selectedItem!.type]
+                                      ?.resolveData
+                                  ) {
+                                    resolveData(
+                                      setAction(appState, setActionData)
+                                    );
                                   } else {
                                     dispatch({
-                                      type: "set",
-                                      state: {
+                                      ...setActionData,
+                                      recordHistory: true,
+                                    });
+                                  }
+                                } else {
+                                  if (data.root.props) {
+                                    // If the component has a resolveData method, we let resolveData run and handle the dispatch once it's done
+                                    if (config.root?.resolveData) {
+                                      resolveData({
                                         ui: { ...ui, ...updatedUi },
                                         data: {
                                           ...data,
                                           root: { props: newProps },
                                         },
-                                      },
-                                      recordHistory: true,
+                                      });
+                                    } else {
+                                      dispatch({
+                                        type: "set",
+                                        state: {
+                                          ui: { ...ui, ...updatedUi },
+                                          data: {
+                                            ...data,
+                                            root: { props: newProps },
+                                          },
+                                        },
+                                        recordHistory: true,
+                                      });
+                                    }
+                                  } else {
+                                    // DEPRECATED
+                                    dispatch({
+                                      type: "setData",
+                                      data: { root: newProps },
                                     });
                                   }
+                                }
+                              };
+
+                              if (selectedItem && itemSelector) {
+                                const { readOnly = {} } = selectedItem;
+
+                                return (
+                                  <InputOrGroup
+                                    key={`${selectedItem.props.id}_${fieldName}`}
+                                    field={field}
+                                    name={fieldName}
+                                    id={`${selectedItem.props.id}_${fieldName}`}
+                                    label={field.label}
+                                    readOnly={readOnly[fieldName]}
+                                    readOnlyFields={readOnly}
+                                    value={selectedItem.props[fieldName]}
+                                    onChange={onChange}
+                                  />
+                                );
+                              } else {
+                                const { readOnly = {} } = data.root;
+
+                                return (
+                                  <InputOrGroup
+                                    key={`page_${fieldName}`}
+                                    field={field}
+                                    name={fieldName}
+                                    id={`root_${fieldName}`}
+                                    label={field.label}
+                                    readOnly={readOnly[fieldName]}
+                                    readOnlyFields={readOnly}
+                                    value={rootProps[fieldName]}
+                                    onChange={onChange}
+                                  />
+                                );
+                              }
+                            })}
+                          </SidebarSection>
+                        </FieldWrapper>
+                      ) }
+
+                      {!selectedItem  && showGlobaleProps && (
+                        <FieldWrapper dispatch={dispatch} state={appState}>
+                        <SidebarSection
+                          noPadding
+                          // showBreadcrumbs
+                          title="Page"
+                          isLoading={componentState["puck-root"]?.loading}
+                        >
+                          {Object.keys(fields).map((fieldName) => {
+                            const field = fields[fieldName];
+                      
+                            const onChange = (
+                              value: any,
+                              updatedUi?: Partial<UiState>
+                            ) => {
+                              const newProps = {
+                                ...rootProps,
+                                [fieldName]: value,
+                              };
+                      
+                              if (data.root.props) {
+                                if (config.root?.resolveData) {
+                                  resolveData({
+                                    ui: { ...ui, ...updatedUi },
+                                    data: {
+                                      ...data,
+                                      root: { props: newProps },
+                                    },
+                                  });
                                 } else {
-                                  // DEPRECATED
                                   dispatch({
-                                    type: "setData",
-                                    data: { root: newProps },
+                                    type: "set",
+                                    state: {
+                                      ui: { ...ui, ...updatedUi },
+                                      data: {
+                                        ...data,
+                                        root: { props: newProps },
+                                      },
+                                    },
+                                    recordHistory: true,
                                   });
                                 }
+                              } else {
+                                // DEPRECATED
+                                dispatch({
+                                  type: "setData",
+                                  data: { root: newProps },
+                                });
                               }
                             };
-
-                            if (selectedItem && itemSelector) {
-                              const { readOnly = {} } = selectedItem;
-
-                              return (
-                                <InputOrGroup
-                                  key={`${selectedItem.props.id}_${fieldName}`}
-                                  field={field}
-                                  name={fieldName}
-                                  id={`${selectedItem.props.id}_${fieldName}`}
-                                  label={field.label}
-                                  readOnly={readOnly[fieldName]}
-                                  readOnlyFields={readOnly}
-                                  value={selectedItem.props[fieldName]}
-                                  onChange={onChange}
-                                />
-                              );
-                            } else {
-                              const { readOnly = {} } = data.root;
-
-                              return (
-                                <InputOrGroup
-                                  key={`page_${fieldName}`}
-                                  field={field}
-                                  name={fieldName}
-                                  id={`root_${fieldName}`}
-                                  label={field.label}
-                                  readOnly={readOnly[fieldName]}
-                                  readOnlyFields={readOnly}
-                                  value={rootProps[fieldName]}
-                                  onChange={onChange}
-                                />
-                              );
-                            }
+                      
+                            const { readOnly = {} } = data.root;
+                      
+                            return (
+                              <InputOrGroup
+                                key={`page_${fieldName}`}
+                                field={field}
+                                name={fieldName}
+                                id={`root_${fieldName}`}
+                                label={field.label}
+                                readOnly={readOnly[fieldName]}
+                                readOnlyFields={readOnly}
+                                value={rootProps[fieldName]}
+                                onChange={onChange}
+                              />
+                            );
                           })}
                         </SidebarSection>
                       </FieldWrapper>
+                      
+                      )}
+
                     </div>
                     <div
                       className={getClassName("frame")}

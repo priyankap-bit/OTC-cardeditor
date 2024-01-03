@@ -118,10 +118,16 @@ const HeadingOutlineAnalyer = ({
 
   return (
     <>
-      {children}
-      <SidebarSection title="Heading Outline">
-        {hierarchy.length === 0 && <div>No headings.</div>}
-
+      {/* {children} */}
+      {/* <SidebarSection title="Heading Outline"> */}
+        {/* {hierarchy.length === 0 && <div>No headings.</div>} */}
+      <div style={{
+        padding: "11px 6px",
+        textAlign: "center",
+        background: "#4154E9",
+        boxShadow: "0px 4px 8px 2px rgba(0, 0, 0, 0.07)",
+        color: "#FFFFFF"
+      }}>Global styling</div>
         <OutlineList>
           <ReactFromJSON<{
             Root: (any) => ReactElement;
@@ -192,7 +198,7 @@ const HeadingOutlineAnalyer = ({
             }}
           />
         </OutlineList>
-      </SidebarSection>
+      {/* </SidebarSection> */}
       <Provider store={store}>
       <GlobalTools/>
       </Provider>
