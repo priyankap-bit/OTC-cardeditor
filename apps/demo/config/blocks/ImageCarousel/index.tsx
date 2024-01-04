@@ -36,7 +36,7 @@ const base64ToBlob = (base64String) => {
 const renderCarouselImages = (item, column) => {
     return (
         <div>
-            <Slider dots infinite slidesToShow={Math.min(column, item.length)} slidesToScroll={1} autoplay>
+            <Slider arrows={false} dots infinite slidesToShow={Math.min(column, item.length)} slidesToScroll={1} autoplay>
                 {item.map((base64Image, index) => (
                     <div key={index} style={{ width: '100%' }}>
                         {base64Image.upload == '' ?

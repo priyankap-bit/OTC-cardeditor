@@ -9,6 +9,7 @@ import { Button } from "@/core/components/Button";
 import headingAnalyzer from "@/plugin-heading-analyzer/src/HeadingAnalyzer";
 import config, { initialData } from "../../config";
 import './client.css'
+import * as htmlToImage from 'html-to-image';
 
 const EMAIL_ID = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 const isBrowser = typeof window !== "undefined";
@@ -119,6 +120,28 @@ const handleSaveButton = async (data: Data) => {
     const jsonData = await response.json();
     console.log('responseeee', jsonData);
 
+    const puckComponents = document.querySelectorAll("#puck-component");
+    const originalDisplayStyles = [];
+
+    for (let i = 0; i < puckComponents.length; i++) {
+      const puckComponent = puckComponents[i] as HTMLElement;
+      originalDisplayStyles.push(puckComponent.style.display);
+      puckComponent.style.display = "none";
+    }
+
+      htmlToImage.toPng(document.getElementById('puck-dropzone'))
+      .then(function (dataUrl) {
+        for (let i = 0; i < puckComponents.length; i++) {
+          const puckComponent = puckComponents[i] as HTMLElement;
+          puckComponent.style.display = originalDisplayStyles[i];
+        }
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'download.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
     // Assuming `setData` is a function you've defined elsewhere
   } catch (error) {
     console.error('Error fetching data:', error);

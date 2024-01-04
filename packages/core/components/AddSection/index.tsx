@@ -44,7 +44,7 @@ export const AddSection = () => {
         </div>
 
         <div className={getClassName("componentDiv")}>
-
+            <img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" alt="ddsfdsaa" width={150} height={200} style={{borderRadius:"10px"}} />
         </div>
 
       </div>

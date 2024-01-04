@@ -93,7 +93,7 @@ export const DraggableComponent = ({
             </div>
           )}
           <div className={getClassName("overlay")}>
-            <div className={getClassName("actions")}>
+            <div className={getClassName("actions")} id="puck-component">
               {label && (
                 <div className={getClassName("actionsLabel")}>{label}</div>
               )}

@@ -1026,7 +1026,9 @@ export function Puck({
                             state={appState}
                             {...rootProps}
                           >
-                            <DropZone zone={rootDroppableId} />
+                            <div id="puck-dropzone">
+                              <DropZone zone={rootDroppableId} />
+                            </div>
                           </Page>
                         </div>
                       </div>
