@@ -104,6 +104,7 @@
 
 .Testimonial-icon{
   padding-top: 10px;
+  text-align: center;
 }
 
 @media (min-width: 768px) {

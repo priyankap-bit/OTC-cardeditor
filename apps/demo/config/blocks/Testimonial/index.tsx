@@ -13,7 +13,9 @@ export type TestimonialProps = {
   //   image: string;
   //   name: string;
   //   title: string;
-  HideDivider: true | false;
+  Divider: true | false;
+  Title: true | false;
+  Icon: string; // Add a new prop for the custom icon
   Items: {
     content: string;
     image: string;
@@ -36,12 +38,61 @@ const base64ToBlob = (base64String) => {
 
 export const Testimonial: ComponentConfig<TestimonialProps> = {
   fields: {
-    HideDivider: {
+    Divider: {
       type: "radio",
       options: [
-        { label: "Yes", value: true },
-        { label: "No", value: false },
+        { label: "Show Divider", value: true },
+        { label: "Hide Divider", value: false },
       ],
+    },
+    Title: {
+      type: "radio",
+      options: [
+        { label: "Show Title", value: true },
+        { label: "Hide Title", value: false },
+      ],
+    },
+    Icon: {
+      label: "Custom Icon",
+      type: "custom",
+      render: ({ name, onChange, value, ...rest }) => {
+        const handleIconChange = (e) => {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+
+          reader.onload = () => {
+            const base64Icon = reader.result.split(",")[1];
+            onChange(base64Icon);
+          };
+
+          reader.readAsDataURL(file);
+        };
+
+        return (
+          <label
+            style={{
+              display: "inline-block",
+              padding: "10px 15px",
+              fontSize: "16px",
+              cursor: "pointer",
+              backgroundColor: "#3498db",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+            }}
+          >
+            Upload Icon
+            <input
+              name={name}
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleIconChange}
+              {...rest}
+            />
+          </label>
+        );
+      },
     },
     Items: {
       type: "array",
@@ -115,7 +166,9 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     // image: "",
     // name: "name",
     // title: "title",
-    HideDivider: true,
+    Divider: true,
+    Title: true,
+    Icon: "https://img.icons8.com/fluency-systems-filled/48/star.png", // Default icon
     Items: [
       {
         content: "Content",
@@ -125,20 +178,28 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
       },
     ],
   },
-  render: ({ Items, HideDivider }) => {
+  render: ({ Items, Divider, Title, Icon }) => {
+    console.log("icon",Icon);
+    
     // const imageUrl = image ? URL.createObjectURL(base64ToBlob(image)) : null;
     return (
       // <div className={getClassName()} style={{ textAlign: "center", maxWidth:"1280px", marginLeft:"auto", marginRight:"auto" }}>
       <Section>
-        {HideDivider && (
+        {Divider && (
           <div className={getClassName("divider")}>
             <div className={getClassName("dividerOne")}></div>
             <div className={getClassName("icon")}>
-              <img
+              {/* <img
                 width="30"
                 height="30"
                 src="https://img.icons8.com/fluency-systems-filled/48/star.png"
                 alt="star"
+              /> */}
+               <img
+                width="30"
+                height="30"
+                src={Icon.startsWith('http') ? Icon : `data:image/png;base64,${Icon}`}
+                alt="icon"
               />
             </div>
             <div className={getClassName("dividerOne")}></div>
@@ -205,12 +266,14 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                           {item.name}
                         </span>
                       </div>
-                      <div
-                        className={getClassName("title")}
-                        style={{ textAlign: "left" }}
-                      >
-                        {item.title}
-                      </div>
+                      {Title && (
+                        <div
+                          className={getClassName("title")}
+                          style={{ textAlign: "left" }}
+                        >
+                          {item.title}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -253,33 +316,36 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                     />
                   )}
                 </div>
-                <div className={getClassName("text-info")}>
-                  <div
-                    className={getClassName("name")}
-                    style={{ textAlign: "left" }}
-                  >
-                    {/* {item.name} */}
-                    <span
-                      style={{
-                        fontWeight: "bold",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        justifyContent: "center",
-                        maxWidth: "100%",
-                        wordWrap: "break-word",
-                      }}
-                      className={getClassName("p")}
+                {Title && (
+                  <div className={getClassName("text-info")}>
+                    <div
+                      className={getClassName("name")}
+                      style={{ textAlign: "left" }}
                     >
-                      {item.name}
-                    </span>
+                      {/* {item.name} */}
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          justifyContent: "center",
+                          maxWidth: "100%",
+                          wordWrap: "break-word",
+                        }}
+                        className={getClassName("p")}
+                      >
+                        {item.name}
+                      </span>
+                    </div>
+
+                    <div
+                      className={getClassName("title")}
+                      style={{ textAlign: "left" }}
+                    >
+                      {item.title}
+                    </div>
                   </div>
-                  <div
-                    className={getClassName("title")}
-                    style={{ textAlign: "left" }}
-                  >
-                    {item.title}
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           ))
