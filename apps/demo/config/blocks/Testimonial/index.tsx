@@ -46,7 +46,7 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
         const checked = value === undefined ? true : value;
         return (
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>Hide Divider</div>
+            <div className={getClassName("titleToggleHeading")}>Hide Divider</div>
             <div>
               <label className={getClassName("toggleSwitch")}>
                 <input
@@ -133,11 +133,33 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     },
   
     Title: {
-      type: "radio",
-      options: [
-        { label: "Show Title", value: true },
-        { label: "Hide Title", value: false },
-      ],
+      label: "Show Divider",
+      type: "custom",
+      render: ({ name, onChange, value, ...rest }) => {
+        const handleToggle = () => {
+          onChange(!value); // Toggle the value when the button is clicked
+        };
+        console.log("value", value);
+
+        const checked = value === undefined ? true : value;
+        return (
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className={getClassName("titleToggleHeading")}>Hide Title</div>
+            <div>
+              <label className={getClassName("toggleSwitch")}>
+                <input
+                  type="checkbox"
+                  name={name}
+                  checked={checked}
+                  onChange={() => onChange(!value)} // Toggle the value when the checkbox is clicked
+                  {...rest}
+                />
+                <span className={getClassName("toggleSlider")}></span>
+              </label>
+            </div>
+          </div>
+        );
+      },
     },
 
     Items: {

@@ -92,23 +92,23 @@
   height: 50px;
 }
 
-.Testimonial-dividerOne{
+.Testimonial-dividerOne {
   border-bottom: 2px solid #000;
   width: 43%;
   margin-bottom: 13px;
 }
-.Testimonial-divider{
+.Testimonial-divider {
   display: flex;
   margin-top: 10px;
 }
 
-.Testimonial-icon{
+.Testimonial-icon {
   padding-top: 10px;
   text-align: center;
-  padding: 10px 30px 0px 30px; 
+  padding: 10px 30px 0px 30px;
 }
 
-.Testimonial-TitleHeading{
+.Testimonial-TitleHeading {
   text-align: center;
   font-size: 26px;
   font-weight: 700;
@@ -116,6 +116,12 @@
 }
 
 /* Add these styles to your existing CSS file or create a new one */
+
+.Testimonial-titleToggleHeading {
+  color: #2c2c2c;
+  font-size: 15px;
+  font-weight: 600;
+}
 
 .Testimonial-toggleSwitch {
   position: relative;
@@ -138,8 +144,8 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
@@ -151,13 +157,13 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
 .Testimonial-toggleSwitch input:checked + .Testimonial-toggleSlider {
-  background-color: #E65925;
+  background-color: #e65925;
 }
 
 /* .Testimonial-toggleSwitch input:focus + .Testimonial-toggleSlider {
