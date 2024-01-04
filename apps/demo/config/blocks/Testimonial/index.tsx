@@ -9,13 +9,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const getClassName = getClassNameFactory("Testimonial", styles);
 
 export type TestimonialProps = {
-  //   content: string;
-  //   image: string;
-  //   name: string;
-  //   title: string;
-  Divider: true | false;
   Title: true | false;
-  Icon: string; // Add a new prop for the custom icon
+  Icon: string;
+  Divider: true | false;
   Items: {
     content: string;
     image: string;
@@ -39,18 +35,33 @@ const base64ToBlob = (base64String) => {
 export const Testimonial: ComponentConfig<TestimonialProps> = {
   fields: {
     Divider: {
-      type: "radio",
-      options: [
-        { label: "Show Divider", value: true },
-        { label: "Hide Divider", value: false },
-      ],
-    },
-    Title: {
-      type: "radio",
-      options: [
-        { label: "Show Title", value: true },
-        { label: "Hide Title", value: false },
-      ],
+      label: "Show Divider",
+      type: "custom",
+      render: ({ name, onChange, value, ...rest }) => {
+        const handleToggle = () => {
+          onChange(!value); // Toggle the value when the button is clicked
+        };
+        console.log("value", value);
+
+        const checked = value === undefined ? true : value;
+        return (
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div>Hide Divider</div>
+            <div>
+              <label className={getClassName("toggleSwitch")}>
+                <input
+                  type="checkbox"
+                  name={name}
+                  checked={checked}
+                  onChange={() => onChange(!value)} // Toggle the value when the checkbox is clicked
+                  {...rest}
+                />
+                <span className={getClassName("toggleSlider")}></span>
+              </label>
+            </div>
+          </div>
+        );
+      },
     },
     Icon: {
       label: "Custom Icon",
@@ -68,32 +79,67 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
           reader.readAsDataURL(file);
         };
 
+        const handlePreviewClick = () => {
+          // Trigger the file input when the preview image is clicked
+          document.getElementById("image_upload").click();
+        };
+
         return (
-          <label
-            style={{
-              display: "inline-block",
-              padding: "10px 15px",
-              fontSize: "16px",
-              cursor: "pointer",
-              backgroundColor: "#3498db",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-            }}
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
-            Upload Icon
+            <label
+              htmlFor="image_upload"
+              style={{
+                cursor: "pointer",
+                fontSize: "12px",
+                textAlign: "center",
+              }}
+            >
+              Change icon
+            </label>
             <input
-              name={name}
               type="file"
-              accept="image/*"
-              style={{ display: "none" }}
+              id="image_upload"
+              accept="image/*,video/*"
               onChange={handleIconChange}
+              style={{ display: "none" }} // Hide the file input
               {...rest}
             />
-          </label>
+            <div
+              style={{
+                cursor: "pointer",
+                textAlign: "center",
+                marginTop: "10px",
+                maxWidth: "400px",
+                maxHeight: "400px",
+              }}
+              onClick={handlePreviewClick}
+            >
+              <img
+                width="100"
+                height="100"
+                src={
+                  value.startsWith("http")
+                    ? value
+                    : `data:image/png;base64,${value}`
+                }
+                alt="icon"
+              />
+            </div>
+          </div>
         );
       },
     },
+  
+    Title: {
+      type: "radio",
+      options: [
+        { label: "Show Title", value: true },
+        { label: "Hide Title", value: false },
+      ],
+    },
+
     Items: {
       type: "array",
       getItemSummary: (item, i) => item.alt || `Testimonial ${i}`,
@@ -162,12 +208,8 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     },
   },
   defaultProps: {
-    // content: "Content",
-    // image: "",
-    // name: "name",
-    // title: "title",
-    Divider: true,
     Title: true,
+    Divider: true,
     Icon: "https://img.icons8.com/fluency-systems-filled/48/star.png", // Default icon
     Items: [
       {
@@ -179,8 +221,6 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
     ],
   },
   render: ({ Items, Divider, Title, Icon }) => {
-    console.log("icon",Icon);
-    
     // const imageUrl = image ? URL.createObjectURL(base64ToBlob(image)) : null;
     return (
       // <div className={getClassName()} style={{ textAlign: "center", maxWidth:"1280px", marginLeft:"auto", marginRight:"auto" }}>
@@ -195,15 +235,22 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                 src="https://img.icons8.com/fluency-systems-filled/48/star.png"
                 alt="star"
               /> */}
-               <img
+              <img
                 width="30"
                 height="30"
-                src={Icon.startsWith('http') ? Icon : `data:image/png;base64,${Icon}`}
+                src={
+                  Icon.startsWith("http")
+                    ? Icon
+                    : `data:image/png;base64,${Icon}`
+                }
                 alt="icon"
               />
             </div>
             <div className={getClassName("dividerOne")}></div>
           </div>
+        )}
+        {Title && (
+          <div className={getClassName("TitleHeading")}>Testimonials</div>
         )}
         {Items && Items.length > 1 ? (
           <Carousel
@@ -266,14 +313,13 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
                           {item.name}
                         </span>
                       </div>
-                      {Title && (
-                        <div
-                          className={getClassName("title")}
-                          style={{ textAlign: "left" }}
-                        >
-                          {item.title}
-                        </div>
-                      )}
+
+                      <div
+                        className={getClassName("title")}
+                        style={{ textAlign: "left" }}
+                      >
+                        {item.title}
+                      </div>
                     </div>
                   </div>
                 </div>
