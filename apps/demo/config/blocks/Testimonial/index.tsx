@@ -220,7 +220,7 @@ export const Testimonial: ComponentConfig<TestimonialProps> = {
       },
     ],
   },
-  render: ({ Items, Divider, ShowDivider, Title, Icon }) => {
+  render: ({ Items, Divider, Title, Icon }) => {
     // const imageUrl = image ? URL.createObjectURL(base64ToBlob(image)) : null;
     return (
       // <div className={getClassName()} style={{ textAlign: "center", maxWidth:"1280px", marginLeft:"auto", marginRight:"auto" }}>
