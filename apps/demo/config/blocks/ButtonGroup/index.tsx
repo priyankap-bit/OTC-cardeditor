@@ -24,18 +24,18 @@ const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: stri
 };
 export type ButtonGroupProps = {
   Align?: string;
-  Buttons: { label: string; href: string; variant: "primary" | "secondary" }[];
+  Buttons: { Label: string; Href: string; Variant: "primary" | "secondary" }[];
 };
 
 export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
   fields: {
     Buttons: {
       type: "array",
-      getItemSummary: (item) => item.label || "Button",
+      getItemSummary: (item) => item.Label || "Button",
       arrayFields: {
-        label: { type: "text" },
-        href: { type: "text" },
-        variant: {
+        Label: { type: "text" },
+        Href: { type: "text" },
+        Variant: {
           type: "radio",
           options: [
             { label: "primary", value: "primary" },
@@ -44,9 +44,9 @@ export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
         },
       },
       defaultItemProps: {
-        label: "Button",
-        href: "#",
-        variant: "primary",
+        Label: "Button",
+        Href: "#",
+        Variant: "primary",
       },
     },
     Align: {
@@ -58,7 +58,7 @@ export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
     },
   },
   defaultProps: {
-    Buttons: [{ label: "Learn more", href: "#", variant: "primary" }],
+    Buttons: [{ Label: "Learn more", Href: "#", Variant: "primary" }],
   },
   render: ({ Align, Buttons }) => {
     const sizevalue = Gloabalfontsize();
@@ -69,11 +69,11 @@ export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
           {Buttons.map((button, i) => (
             <Button
               key={i}
-              href={button.href}
-              variant={button.variant}
+              href={button.Href}
+              variant={button.Variant}
               size="large"
             >
-              {button.label}
+              {button.Label}
             </Button>
           ))}
         </div>

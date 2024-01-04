@@ -1,0 +1,49 @@
+.AddSection-body {
+  background: #e65925;
+  height: 100%;
+}
+
+.AddSection-searchsection {
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.AddSection-headingDiv {
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-bottom: 1px solid #fff;
+  margin-top: 10px;
+}
+
+.AddSection-heading {
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.AddSection-Input {
+  /* display: flex; */
+  min-width: 250px;
+  max-width: 450px;
+  padding: 10px;
+  align-items: center;
+  gap: 11px;
+  align-self: stretch;
+  border-radius: 4px;
+  background: #fff;
+  border: none;
+  padding-left: 40px;
+}
+
+.AddSection-searchSvg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

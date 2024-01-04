@@ -1,28 +1,89 @@
-.globalstyle-container{
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    gap: 11px;
+.globalstyle-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 11px;
 }
 
-.globalstyle-text{
-    font-size: 13px;
-    font-weight: 600;
-    color: #5a5a5a;
+.globalstyle-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5a5a5a;
 }
 
-.globalstyle-input{
-    font-size: 15px;
-    font-weight: 600;
-    color: #5a5a5a;
-    padding: 12px;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
+.globalstyle-input {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5a5a5a;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+}
+
+/* .globalstyle-colorpikar {
+  width: 50%;
+  height: 36px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+} */
+
+.globalstyle-globalItem {
+  cursor: pointer;
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 12px 15px;
+  /* background: #e65925; */
+  height: 50px;
+}
+
+.globalstyle-globalItemVentor {
+  margin-right: 10px;
+}
+
+.globalstyle-mainTitle {
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.globalstyle-title {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.globalstyle-expandedItems {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px 10px;
+}
+
+.globalstyle-expandedItem {
+  padding: 1px 10px;
+}
+
+.globalstyle-svgDiv {
+  display: flex;
+  padding: 6px;
+  align-items: center;
+  gap: 11px;
+  border-radius: 4px;
+/* background: #1E50C3; */
 }
 
 .globalstyle-colorpikar{
-    width: 50%;
-    height: 36px;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
+    width: 33px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+}
+
+.globalstyle-svg{
+    position: absolute;
+    top: 7px;
+    left: 8px;
 }

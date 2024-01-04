@@ -84,7 +84,7 @@
 }
 
 .Button--info:hover{
-  opacity: 0.7;
+  opacity: 0.9;
   transition: opacity 50ms ease-in
 }
 
@@ -103,6 +103,7 @@
   border-radius: 4px;
   color: #ffffff;
 }
+
 
 .Button--center{
   justify-content: center;

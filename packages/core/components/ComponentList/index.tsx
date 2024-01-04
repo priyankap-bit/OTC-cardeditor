@@ -174,7 +174,7 @@ const ComponentList = ({
     <div
       className={getClassName({ isExpanded: expanded })}
       style={{
-        marginBottom: "10px",
+        marginBottom: "6px",
       }}
     >
       {title && (
