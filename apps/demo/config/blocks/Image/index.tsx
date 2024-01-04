@@ -4,6 +4,12 @@ import { Section } from "../../components/Section";
 
 export type ImageProps = {
   image: string; // Assuming the image is a Base64-encoded string
+  url: string;
+};
+
+type ImageStyles = {
+  width: string;
+  WebkitWidth: string;
 };
 
 let base64Image: any;
@@ -55,20 +61,22 @@ export const Image: ComponentConfig<ImageProps> = {
         );
       },
     },
+    url: {type:"text"},
   },
   defaultProps: {
     image: "",
+    url: "#",
   },
-  render: ({ image }) => {
+  render: ({ image, url }) => {
     const imageUrl = image ? URL.createObjectURL(base64ToBlob(image)) : null;
 
     return (
       <Section>
          <div>
           {image ? (
-            <img src={imageUrl} alt="Preview" style={{ width: '100%', WebkitWidth: '-webkit-fill-available' }}  />
+            <a href={url} target="_blank"><img src={imageUrl} alt="Preview" style={{ width: '100%', WebkitWidth: '-webkit-fill-available' } as ImageStyles}  /></a>
           ) : (
-            <img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" alt="Default Preview" style={{ width: '100%', WebkitWidth: '-webkit-fill-available' }}  />
+            <a href={url} target="_blank"><img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" alt="Default Preview" style={{ width: '100%', WebkitWidth: '-webkit-fill-available' } as ImageStyles}  /></a>
           )}
         </div>
       </Section>

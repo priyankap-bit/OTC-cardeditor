@@ -23,19 +23,19 @@ const Gloabalfontsize = (): { fontSize: number; fontColor: string; bgColor: stri
   return { fontSize, fontColor, bgColor ,fontfamily};
 };
 export type ButtonGroupProps = {
-  align?: string;
-  buttons: { label: string; href: string; variant: "primary" | "secondary" }[];
+  Align?: string;
+  Buttons: { Label: string; Href: string; Variant: "primary" | "secondary" }[];
 };
 
 export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
   fields: {
-    buttons: {
+    Buttons: {
       type: "array",
-      getItemSummary: (item) => item.label || "Button",
+      getItemSummary: (item) => item.Label || "Button",
       arrayFields: {
-        label: { type: "text" },
-        href: { type: "text" },
-        variant: {
+        Label: { type: "text" },
+        Href: { type: "text" },
+        Variant: {
           type: "radio",
           options: [
             { label: "primary", value: "primary" },
@@ -44,12 +44,12 @@ export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
         },
       },
       defaultItemProps: {
-        label: "Button",
-        href: "#",
-        variant: "primary",
+        Label: "Button",
+        Href: "#",
+        Variant: "primary",
       },
     },
-    align: {
+    Align: {
       type: "radio",
       options: [
         { label: "left", value: "left" },
@@ -58,22 +58,22 @@ export const ButtonGroup: ComponentConfig<ButtonGroupProps> = {
     },
   },
   defaultProps: {
-    buttons: [{ label: "Learn more", href: "#", variant: "primary" }],
+    Buttons: [{ Label: "Learn more", Href: "#", Variant: "primary" }],
   },
-  render: ({ align, buttons }) => {
+  render: ({ Align, Buttons }) => {
     const sizevalue = Gloabalfontsize();
 
     return (
-      <Section style={{backgroundColor:sizevalue.bgColor}} className={getClassName({ center: align === "center" })}>
+      <Section style={{backgroundColor:sizevalue.bgColor}} className={getClassName({ center: Align === "center" })}>
         <div className={getClassName("actions")}>
-          {buttons.map((button, i) => (
+          {Buttons.map((button, i) => (
             <Button
               key={i}
-              href={button.href}
-              variant={button.variant}
+              href={button.Href}
+              variant={button.Variant}
               size="large"
             >
-              {button.label}
+              {button.Label}
             </Button>
           ))}
         </div>

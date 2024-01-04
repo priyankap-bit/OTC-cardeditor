@@ -4,20 +4,20 @@ import { ComponentConfig } from "@/core";
 import { spacingOptions } from "../../options";
 
 export type VerticalSpaceProps = {
-  size: string;
+  Size: string;
 };
 
 export const VerticalSpace: ComponentConfig<VerticalSpaceProps> = {
   fields: {
-    size: {
+    Size: {
       type: "select",
       options: spacingOptions,
     },
   },
   defaultProps: {
-    size: "24px",
+    Size: "24px",
   },
-  render: ({ size }) => {
-    return <div style={{ height: size, width: "100%" }} />;
+  render: ({ Size }) => {
+    return <div style={{ height: Size, width: "100%" }} />;
   },
 };

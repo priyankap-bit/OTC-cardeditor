@@ -105,6 +105,31 @@ const ComponentListItem = ({
                     fill="#49454F"
                   />
                 </svg>
+              ) : component === "Heading" ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="39"
+                  height="39"
+                  viewBox="0 0 42 42"
+                  fill="none"
+                >
+                  <path
+                    d="M18.1888 34.6673V12.459H8.79297V7.33398H32.7096V12.459H23.3138V34.6673H18.1888Z"
+                    fill="#545454"
+                  />
+                </svg>
+              ) : component === "Columns" ? (
+                <img
+                  width="40px"
+                  height="40px"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZUlEQVR4nGNgGAUjCng5+3p4uvg99nT1/09V7OL3CGQ2TotBCqhuKZLlDDgthioiVY5SvQyjFiOD0aBGB6OJCxmMZicMMFqAIIPRAgQdjBYgQ6QAcRmgpo8XpLH3iO6NvVEwLAEAMdC6cd54iHwAAAAASUVORK5CYII="
+                />
+              ) : component === "Card" ? (
+                <img
+                  width="40px"
+                  height="40px"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABIElEQVR4nO2ZUW7CQAxEfQygh0GqvOw6QWu4C9ADtNeidyrw0X61cghCIklVqZXipfOk/XI+ZjJOpEyIAAAAANBFFqtlYt0L60mCfvo6+WjaIuf6exNBX8YXqz86ifW538RitWwuYn1PrJsY11NyRozraQx5axpNa28yifW1dboh50jQXat13zPMRxtW82pCzqnm1aQ1cugML7tHhSBDeu/OiBR2CEbC+CkIEgkFJkKFIDByD4nIX+8xjFzBM+INwVvLGYJEnCFIxBmCREpJJLEebOCxmLulfqwfGiOsb51h0/eakZC35JzE+jRY0Fn92Lq0OnLHnGfkDOY8MxOJ80dz04fKbCuGx/50ld+W2BfM5XnNzhVqkb8VAAAAgP/KF8N04Wn9iSJ8AAAAAElFTkSuQmCC"
+                />
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +174,7 @@ const ComponentList = ({
     <div
       className={getClassName({ isExpanded: expanded })}
       style={{
-        marginBottom: "10px",
+        marginBottom: "6px",
       }}
     >
       {title && (

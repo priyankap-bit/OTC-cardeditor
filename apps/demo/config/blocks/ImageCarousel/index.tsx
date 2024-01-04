@@ -1,18 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { ComponentConfig } from "@/core/types/Config";
-import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Section } from "../../components/Section";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 
-export type ImageGalleryProps = {
+
+export type ImageCarouselProps = {
     Images?: {
         alt: string;
         url: string;
         upload: string;
     }[];
-    layout: "grid" | "carousel";
     column: number;
 };
 
@@ -31,52 +33,25 @@ const base64ToBlob = (base64String) => {
     return new Blob([uint8Array], { type: 'image/png' });
 };
 
-const calculateAdjustedWidth = (column, gap) => {
-    const baseColumnWidth = 100 / column;
-    return `minmax(calc(${baseColumnWidth}% - ${gap}px), 1fr)`;
-};
-
-const renderGridImages = (item, column) => {
-    const gap = 10;
-    const adjustedColumnWidth = calculateAdjustedWidth(column, gap);
-
+const renderCarouselImages = (item, column) => {
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fill, ${adjustedColumnWidth})`, gap: `${gap}px` }}>
-            {item.map((base64Image, index) => (<>
-                <div key={index} style={{ width: '100%' }}>
-                    {base64Image.upload == '' ?
-                        <a href={base64Image.url} target="_blank"><img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" width="100%" height={120} style={{ borderRadius: '10px' }} alt={`Uploaded ${index}`} /></a>
-                        :
-                        <a href={base64Image.url} target="_blank"><img src={URL.createObjectURL(base64ToBlob(base64Image.upload))} width="100%" height={120} style={{ borderRadius: '10px' }} alt={`Uploaded ${index}`} /></a>
-                    }
-                </div>
-            </>))}
-        </div>
-    );
-};
-
-const renderCarouselImages = (item) => {
-    const gap = 10;
-    const adjustedColumnWidth = calculateAdjustedWidth(1, gap);
-
-    return (
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fill, ${adjustedColumnWidth})`, gap: `${gap}px` }}>
-            <Carousel>
+        <div>
+            <Slider dots infinite slidesToShow={Math.min(column, item.length)} slidesToScroll={1} autoplay>
                 {item.map((base64Image, index) => (
-                    <Carousel.Item key={index} interval={2000} style={{ width: '100%' }}>
+                    <div key={index} style={{ width: '100%' }}>
                         {base64Image.upload == '' ?
                             <a href={base64Image.url} target="_blank"><img src="https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg" width="100%" height={300} style={{ borderRadius: '10px' }} alt={`Uploaded ${index}`} /></a>
                             :
                             <a href={base64Image.url} target="_blank"><img src={URL.createObjectURL(base64ToBlob(base64Image.upload))} width="100%" height={300} style={{ borderRadius: '10px' }} alt={`Uploaded ${index}`} /></a>
                         }
-                    </Carousel.Item>
+                    </div>
                 ))}
-            </Carousel>
+            </Slider>
         </div>
     );
 };
 
-export const ImageGallery: ComponentConfig<ImageGalleryProps> = {
+export const ImageCarousel: ComponentConfig<ImageCarouselProps> = {
 
     fields: {
         Images: {
@@ -151,26 +126,18 @@ export const ImageGallery: ComponentConfig<ImageGalleryProps> = {
                 },
             },
         },
-        layout: {
-            type: "select",
-            options: [
-                { label: "Grid", value: "grid" },
-                { label: "Carousel", value: "carousel" },
-            ],
-        },
         column: { type: "number" }
     },
     defaultProps: {
-        layout: "carousel",
-        column: 2,
+        column: 1,
     },
-    render: ({ Images, layout, column }) => {
+    render: ({ Images, column }) => {
         return (
             <Section style={{ margin: "10px" }}>
                 {Images && Images.length > 0 ?
-                    (layout === "grid" ? renderGridImages(Images, column) : renderCarouselImages(Images)) :
+                    renderCarouselImages(Images, column) :
                     <div style={{ height: "200px" }}>
-                        <span style={{ fontSize: "20px", fontWeight: "700" }}>IMAGE GALLERY</span>
+                        <span style={{ fontSize: "20px", fontWeight: "700" }}>IMAGE CAROUSEL GALLERY</span>
                     </div>
                 }
             </Section>

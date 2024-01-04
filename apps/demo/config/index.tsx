@@ -14,12 +14,16 @@ import { Testimonial, TestimonialProps} from "./blocks/Testimonial"
 
 import Root, { RootProps } from "./root";
 import { ImageGallery, ImageGalleryProps } from "./blocks/ImageGallery";
+import { ImageGrid, ImageGridProps } from "./blocks/ImageGrid";
+import { ImageCarousel, ImageCarouselProps } from "./blocks/ImageCarousel";
 import {SingleVideo,SingleVideoProps} from "./blocks/SingleVideo"
 import {VideoGallery,VideoGalleryProps} from "./blocks/VideoGallery"
 type Props = {
   ButtonGroup: ButtonGroupProps;
   Card: CardProps;
   ImageGallery:ImageGalleryProps;
+  ImageGrid:ImageGridProps;
+  ImageCarousel:ImageCarouselProps;
   Columns: ColumnsProps;
   Hero: HeroProps;
   Heading: HeadingProps;
@@ -38,28 +42,30 @@ type Props = {
 export const conf: Config<
   Props,
   RootProps,
-  "free" | "professional" | "team"
+  "Basic" | "Pro" | "Team"
 > = {
   root: {
     render: Root,
   },
   categories: {
-    free: {
+    Basic: {
       components: ["ButtonGroup", "Card", "ImageGallery", "Columns", "Hero", "Heading"],
     },
    
-    professional: {
-      components: ["Card", "Flex", "Logos", "Stats", "Text", "Image", "VerticalSpace", "SingleVideo", "VideoGallery", "Testimonial"],
+    Pro: {
+      components: ["Card", "Flex", "Logos",  "Text", "Image", "VerticalSpace", "SingleVideo", "VideoGallery", "Testimonial"],
     },
     
-    team: {
-      components: ["ButtonGroup", "Card", "ImageGallery", "Columns", "Hero", "Heading", "Card", "Flex", "Logos", "Stats", "Text", "Image", "VerticalSpace", "SingleVideo", "VideoGallery", "Testimonial"],
+    Team: {
+      components: ["ButtonGroup", "Card", "ImageGallery", "Columns", "Hero", "Heading", "Flex", "Logos",  "Text", "Image", "VerticalSpace", "SingleVideo", "VideoGallery", "Testimonial","ImageGrid","ImageCarousel"],
     },
   },
   components: {
     ButtonGroup,
     Card,
     ImageGallery,
+    ImageGrid,
+    ImageCarousel,
     Columns,
     Hero,
     Heading,
